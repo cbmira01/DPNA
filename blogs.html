@@ -19,7 +19,56 @@
 				<a class="main-logo" href="#">Deer Park Neighborhood Association</a>
 			</nav>
 		</div>
-	
 
+		<!-- Dispatch to blog content -->
+	  <div class="row bumpPastHeader">
+			<div class="columns">
+			<p>Deer Park Neighborhood Association blogs!</p>
+			</div>
+		</div>
+
+		<div class="row" data-equalizer>
+			<div class="columns small-12 medium-6 large-4 panel" data-equalizer-watch>			
+			  <img class="bloggerPicture" src="img/steves_picture.svg" alt="A picture of Steve the blogger."/>
+				<a href="blogs/steve/blog.html">Steve's Blog</a>
+			</div>			
+			<div class="columns small-12 medium-6 large-4 panel" data-equalizer-watch>
+			  <img class="bloggerPicture" src="img/shirleys_picture.svg" alt="A picture of Shirley the blogger."/>			
+				<a href="blogs/shirley/blog.html">Shirley's Blog</a>		
+			</div>
+			
+			
+			
+			<div class="columns small-12 medium-6 large-4 panel" data-equalizer-watch>			
+			  <img class="bloggerPicture" src="img/steves_picture.svg" alt="A picture of Steve the blogger."/>
+				<a href="blogs/steve/blog.html">Steve's Blog</a>
+			</div>			
+			<div class="columns small-12 medium-6 large-4 panel" data-equalizer-watch>
+			  <img class="bloggerPicture" src="img/shirleys_picture.svg" alt="A picture of Shirley the blogger."/>			
+				<a href="blogs/shirley/blog.html">Shirley's Blog</a>		
+			</div>			
+		</div>		
+
+		<!-- JavaScript Support -->	
+		<script src="js/vendor/jquery.js"></script>
+		<script src="js/foundation/foundation.js"></script>
+		<script src="js/foundation/foundation.equalizer.js"></script>
+		<!-- Other JS plugins can be included here -->
+		<script>
+			// Following code suggested by Dameian Lott, 
+			//   http://foundation.zurb.com/forum/posts/6492-disable-data-equalizer-for-small
+			$(window).on("load resize",function(e){
+				var equalizeByMedia = true;
+				if ($(document).width() <= 640) {
+					equalizeByMedia = false;
+				}
+				$(document).foundation({
+					equalizer : {
+						equalize_on_stack: equalizeByMedia
+						}
+				});  
+			}); 
+		</script>		
+		
 	</body>
 </html>
