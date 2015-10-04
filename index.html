@@ -24,11 +24,14 @@
 		<!-- Feature Article -->
 
 		<div class="row featureArticle" data-equalizer>
-			<div class="small-12 medium-6 large-6 columns panel radius" data-equalizer-watch>
-				<img src="http://lorempixel.com/640/480/city/1" />
+			<div class="small-12 medium-6 large-6 columns panel" data-equalizer-watch>
+				<figure>
+					<img src="http://lorempixel.com/640/480/city/1" />
+					<figcaption><i>The Deer Park basilica at night.</i></figcaption>
+				</figure> 				
 			</div>
 
-			<div class="small-12 medium-6 large-6 columns panel radius" data-equalizer-watch>
+			<div class="small-12 medium-6 large-6 columns panel" data-equalizer-watch>
 				<h4>Feature Article Title</h4>
 
 				<p>This feature article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. </p>
@@ -97,11 +100,19 @@
 		<script src="js/foundation/foundation.equalizer.js"></script>
 		<!-- Other JS plugins can be included here -->
 		<script>
-			$(document).foundation({
+			// Following code suggested by Dameian Lott, 
+			//   http://foundation.zurb.com/forum/posts/6492-disable-data-equalizer-for-small
+			$(window).on("load resize",function(e){
+				var equalizeByMedia = true;
+				if ($(document).width() <= 640) {
+					equalizeByMedia = false;
+				}
+				$(document).foundation({
 					equalizer : {
-						equalize_on_stack: true
-					}
-			});
+						equalize_on_stack: equalizeByMedia
+						}
+				});  
+			}); 
 		</script>		
 		
 	</body>
