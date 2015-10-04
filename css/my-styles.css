@@ -5,7 +5,9 @@
 
 /* Type
 ================================ */
-
+h1, h2, h3, h4, h5, h6 {
+	color: black;
+}
 
 
 /* Layout
@@ -38,8 +40,8 @@
 ================================= */
 
 
-@media (max-width: 882px) {
+@media (max-width: 882px) {}
 
-@media (max-width: 767px) {
+@media (max-width: 767px) {}
 
 

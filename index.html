@@ -1,61 +1,97 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home - DPNA</title>	
-		
+		<title>Home - DPNA</title>
+
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-		
+
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/foundation.css">
 		<link rel="stylesheet" href="css/foundation-icons.css">
 		<link rel="stylesheet" href="css/my-styles.css" >
 	</head>
 
-	<body>	
+	<body>
 		<!-- Top Bar -->
-		<div class="contain-to-grid fixed"> 
+		<div class="contain-to-grid fixed">
 			<nav class="top-bar">
 				<a class="main-logo" href="#">Deer Park Neighborhood Association</a>
 			</nav>
 		</div>
-<p> test of repo cloning </p>
+
 
 		<!-- Feature Article -->
-		<img src="http://lorempixel.com/640/480/city" />
+
+		<div class="row" data-equalizer>
+			<div class="large-6 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/city/1" />
+			</div>
+
+			<div class="large-6 columns panel" data-equalizer-watch>
+				<h6>Headline Title</h6>
+
+				<p>This feature article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. </p>
+			</div>
+		</div>
+
+	<!-- In-line Articles -->
+		<div class="row" data-equalizer>
+
+			<div class="large-4 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/people/1" />
+				<p>This people article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Quisque finibus euismod sem, vel semper libero pulvinar et. Vivamus mattis nunc ut fermentum sagittis. Vestibulum sit amet dui tortor.</p>
+			</div>
+
+			<div class="large-4 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/nature/1" />
+				<p>This nature article suspendisse pretium finibus enim, et cursus mauris venenatis sed. Nulla venenatis lacus nec enim semper congue. </p>
+			</div>
+
+			<div class="large-4 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/food/1" />
+				<p>This food article donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. </p>
+			</div>
+
+			<div class="large-4 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/people/2" />
+				<p>This second people article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. </p>
+		  </div>
+
+			<div class="large-4 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/nature/2" />
+				<p>This second nature article suspendisse pretium finibus enim, et cursus mauris venenatis sed. Nulla venenatis lacus nec enim semper congue. Suspendisse pretium sapien tortor, non feugiat est facilisis ac. Aenean fringilla tempor congue. Nunc dapibus, urna quis tempus ullamcorper, neque risus placerat nisi, eget pharetra neque est vel justo. Quisque finibus euismod sem, vel semper libero pulvinar et. Vivamus mattis nunc ut fermentum sagittis. Vestibulum sit amet dui tortor.</p>
+			</div>
+
+			<div class="large-4 columns panel" data-equalizer-watch>
+				<img src="http://lorempixel.com/640/480/food/2" />
+				<p>This second food article donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. Proin ac feugiat massa. Maecenas rhoncus accumsan libero, quis vulputate ligula molestie in. Suspendisse potenti. Quisque condimentum vehicula diam, ac condimentum orci consectetur sit amet. Nulla gravida justo eget velit tincidunt euismod. Etiam nec porttitor orci. Maecenas mauris quam, semper eget elit ut, tristique aliquam lacus. Sed eros urna, fermentum vel urna a, laoreet egestas dui.</p>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="row">
+			<div class="large-12 columns">
+				<hr/>
+				<div class="row">
+					<div class="large-6 columns">
+					<p>Follow DPNA </p>
+					</div>
+					<div class="large-6 columns">
+
+					</div>
+				</div>
+			</div>
+		</footer>
 		
-		<h3>Headline Title</h3>
+		<!-- JavaScript Support -->	
+		<script src="js/vendor/jquery.js"></script>
+		<script src="js/foundation/foundation.js"></script>
+		<script src="js/foundation/foundation.equalizer.js"></script>
+		<!-- Other JS plugins can be included here -->
+		<script>
+			$(document).foundation();
+		</script>		
 		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. Donec non rutrum ligula. Vestibulum nisi nibh, dapibus ac sollicitudin a, consequat sit amet ligula. Donec venenatis lobortis nisi, ac efficitur orci ultricies eu. Donec nec viverra lectus.</p>
-
-		<p>Suspendisse pretium finibus enim, et cursus mauris venenatis sed. Nulla venenatis lacus nec enim semper congue. Suspendisse pretium sapien tortor, non feugiat est facilisis ac. Aenean fringilla tempor congue. Nunc dapibus, urna quis tempus ullamcorper, neque risus placerat nisi, eget pharetra neque est vel justo. Quisque finibus euismod sem, vel semper libero pulvinar et. Vivamus mattis nunc ut fermentum sagittis. Vestibulum sit amet dui tortor.</p>
-
-		<p>Donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. Proin ac feugiat massa. Maecenas rhoncus accumsan libero, quis vulputate ligula molestie in. Suspendisse potenti. Quisque condimentum vehicula diam, ac condimentum orci consectetur sit amet. Nulla gravida justo eget velit tincidunt euismod. Etiam nec porttitor orci. Maecenas mauris quam, semper eget elit ut, tristique aliquam lacus. Sed eros urna, fermentum vel urna a, laoreet egestas dui.</p>
-		<!-- Feature Article -->		
-
-		<img src="http://lorempixel.com/640/480/people" />
-		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. Donec non rutrum ligula. Vestibulum nisi nibh, dapibus ac sollicitudin a, consequat sit amet ligula. Donec venenatis lobortis nisi, ac efficitur orci ultricies eu. Donec nec viverra lectus.</p>
-
-  	<img src="http://lorempixel.com/640/480/nature" />
-
-		<p>Suspendisse pretium finibus enim, et cursus mauris venenatis sed. Nulla venenatis lacus nec enim semper congue. Suspendisse pretium sapien tortor, non feugiat est facilisis ac. Aenean fringilla tempor congue. Nunc dapibus, urna quis tempus ullamcorper, neque risus placerat nisi, eget pharetra neque est vel justo. Quisque finibus euismod sem, vel semper libero pulvinar et. Vivamus mattis nunc ut fermentum sagittis. Vestibulum sit amet dui tortor.</p>
-
-		<img src="http://lorempixel.com/640/480/food" />
-
-		<p>Donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. Proin ac feugiat massa. Maecenas rhoncus accumsan libero, quis vulputate ligula molestie in. Suspendisse potenti. Quisque condimentum vehicula diam, ac condimentum orci consectetur sit amet. Nulla gravida justo eget velit tincidunt euismod. Etiam nec porttitor orci. Maecenas mauris quam, semper eget elit ut, tristique aliquam lacus. Sed eros urna, fermentum vel urna a, laoreet egestas dui.</p>
-		
-		<img src="http://lorempixel.com/640/480/people" />
-		
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. Donec non rutrum ligula. Vestibulum nisi nibh, dapibus ac sollicitudin a, consequat sit amet ligula. Donec venenatis lobortis nisi, ac efficitur orci ultricies eu. Donec nec viverra lectus.</p>
-
-  	<img src="http://lorempixel.com/640/480/nature" />
-
-		<p>Suspendisse pretium finibus enim, et cursus mauris venenatis sed. Nulla venenatis lacus nec enim semper congue. Suspendisse pretium sapien tortor, non feugiat est facilisis ac. Aenean fringilla tempor congue. Nunc dapibus, urna quis tempus ullamcorper, neque risus placerat nisi, eget pharetra neque est vel justo. Quisque finibus euismod sem, vel semper libero pulvinar et. Vivamus mattis nunc ut fermentum sagittis. Vestibulum sit amet dui tortor.</p>
-
-		<img src="http://lorempixel.com/640/480/food" />
-
-		<p>Donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. Proin ac feugiat massa. Maecenas rhoncus accumsan libero, quis vulputate ligula molestie in. Suspendisse potenti. Quisque condimentum vehicula diam, ac condimentum orci consectetur sit amet. Nulla gravida justo eget velit tincidunt euismod. Etiam nec porttitor orci. Maecenas mauris quam, semper eget elit ut, tristique aliquam lacus. Sed eros urna, fermentum vel urna a, laoreet egestas dui.</p>		
-
 	</body>
 </html>
