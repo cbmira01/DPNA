@@ -23,6 +23,16 @@ h1, h2, h3, h4, h5, h6 {
 	width: 80px;
 }
 
+.officerPicture {
+	height: 100px;
+	width: 100px;
+}
+
+.boardMemberPicture {
+	height: 70px;
+	width: 70px;
+}
+
 
 /* Banner Headline
 ================================= */
