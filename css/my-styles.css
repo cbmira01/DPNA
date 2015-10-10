@@ -54,19 +54,23 @@ a.main-logo h4 {
 }
 
 .officerPanelA {	
-	background: #C9A0DC;
+	background: #c9a0dc;
 }
 
 .officerPanelB {	
-	background: #C9A0DC;
+	background: #e6cef1;
 }
 
 .boardMemeberPanelA {	
-	background: #C9A0DC;
+	background: #b1de60;
 }
 
 .boardMemeberPanelB {	
-	background: #C9A0DC;
+	background: #cdf18b;
+}
+
+.boardMemeberPanelC {	
+	background: #def8b1;
 }
 
 /* Images
