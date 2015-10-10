@@ -9,11 +9,39 @@ h1, h2, h3, h4, h5, h6 {
 	color: black;
 }
 
-
-/* Layout
+/* Topbar
 ================================ */
-.bumpPastHeader {
-	padding-top: 60px;
+.topbar {
+	height: 4em;
+}
+
+a.main-logo h4 {
+	margin: 1em;
+	color: white;
+}
+
+.bumpPastTopbar{
+	margin-top: 5em;
+}
+/* Panel Colors
+================================ */
+.featureColorImage {
+	background: #e6cef1;
+}
+
+.featureColorText {
+	background: #fff3b6;
+}
+
+
+.officerPanelA {
+	
+	background: #C9A0DC;
+}
+
+.officerPanelB {
+	
+	background: #C9A0DC;
 }
 
 /* Images
@@ -57,4 +85,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Media Queries
 ================================= */
+// Foundation media queries from http://foundation.zurb.com/docs/media-queries.html
+
+// Small screens,  up to 640px 
+@media only screen and (max-width: 40em) { 
+	nav.top-bar {
+		height: 2em;
+	}
+}
+
+// Medium screens, 641px to 1024px 
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } 
+
+// Large screens,  1025px to 1440px and larger..
+@media only screen and (min-width: 64.063em) { }
 
