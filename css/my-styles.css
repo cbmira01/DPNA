@@ -15,9 +15,16 @@ h1, h2, h3, h4, h5, h6 {
 	height: 4em;
 }
 
+.deerLogo {
+	margin-left: 1em;
+	height: 4em; 
+	width: 4em;
+}
+
 a.main-logo h4 {
 	margin: 1em;
 	color: white;
+	display: inline;
 }
 
 .bumpPastTopbar{
@@ -85,19 +92,15 @@ a.main-logo h4 {
 }
 
 
-/* Banner Headline
+/* Footer
 ================================= */
+footer {
+	color: silver;
+}
 
-
-
-/* Logos & Icons
-================================= */
-
-
-
-/* Form
-================================= */
-
+.socialIcon {
+	font-size: 3em;
+}
 
 
 
