@@ -23,6 +23,7 @@ a.main-logo h4 {
 .bumpPastTopbar{
 	margin-top: 5em;
 }
+
 /* Panel Colors
 ================================ */
 .featureColorImage {
@@ -33,14 +34,31 @@ a.main-logo h4 {
 	background: #fff3b6;
 }
 
+.articleColorA {
+	background: #e6cef1;	
+}
 
-.officerPanelA {
-	
+.articleColorB {
+	background: #fff3b6;	
+}
+
+.articleColorC {
+	background: #def8b1;	
+}
+
+.officerPanelA {	
 	background: #C9A0DC;
 }
 
-.officerPanelB {
-	
+.officerPanelB {	
+	background: #C9A0DC;
+}
+
+.boardMemeberPanelA {	
+	background: #C9A0DC;
+}
+
+.boardMemeberPanelB {	
 	background: #C9A0DC;
 }
 
@@ -59,6 +77,11 @@ a.main-logo h4 {
 .boardMemberPicture {
 	height: 70px;
 	width: 70px;
+}
+
+.adGraphics {
+	height: 75%;
+	width: 100%;	
 }
 
 
@@ -89,14 +112,17 @@ a.main-logo h4 {
 
 // Small screens,  up to 640px 
 @media only screen and (max-width: 40em) { 
-	nav.top-bar {
-		height: 2em;
-	}
+
 }
 
 // Medium screens, 641px to 1024px 
-@media only screen and (min-width: 40.063em) and (max-width: 64em) { } 
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { 
+
+}
 
 // Large screens,  1025px to 1440px and larger..
-@media only screen and (min-width: 64.063em) { }
+@media only screen and (min-width: 64.063em) { 
+
+}
+
 
