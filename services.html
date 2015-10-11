@@ -48,31 +48,24 @@
 		<script src="js/foundation/foundation.js"></script>
 		<script src="js/foundation/foundation.equalizer.js"></script>
 		<script src="js/foundation/foundation.dropdown.js"></script>		
-		<!-- Other JS plugins can be included here -->
 
-		<!-- Alternate topbar text, turn off panel equalization on small media -->
+		<!-- Foundation reactive features for small media -->
 		<script>
 			$(window).on("load resize",function(e) {
-			
-				var dpnaElement = document.getElementById("dpnaText");
-				if ( Foundation.utils.is_small_only() ) {
-					dpnaElement.innerHTML = "DPNA";
+				var isSmallMedia = Foundation.utils.is_small_only();
+				var dpnaElement = document.getElementById("dpnaText");				
+				if ( isSmallMedia ) {
+					dpnaElement.innerHTML = "DPNA";					
+					$(document).foundation({
+						equalizer : { equalize_on_stack: false }
+					});				
 				} else {
 					dpnaElement.innerHTML = "Deer Park Neighborhood Association";
+					$(document).foundation({
+						equalizer : { equalize_on_stack: true }
+					});					
 				}
-
-				// Following code suggested by Dameian Lott, 
-				//   http://foundation.zurb.com/forum/posts/6492-disable-data-equalizer-for-small				
-				var equalizeByMedia = true;
-				if ($(document).width() <= 640) {
-					equalizeByMedia = false;
-				}
-				$(document).foundation({
-					equalizer : {
-						equalize_on_stack: equalizeByMedia
-						}
-				});  
-			}); 
+			});  //end on-resize
 		</script>				
 		
 	</body>
