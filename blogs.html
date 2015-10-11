@@ -17,7 +17,23 @@
 		<div class="contain-to-grid fixed topbar">
 			<nav class="top-bar">			
 				<img class="deerLogo hide-for-small-only" border="0" align="Left" src="img/deer-logo-256px.jpeg"/>		
-				<a class="main-logo" href="#"><h4>Deer Park Neighborhood Association</h4></a>
+				
+				<a class="main-logo" href="#"><h4 id="dpnaText">Deer Park Neighborhood Association</h4></a>	
+
+				<a href="#" 
+				   data-options="ignore_repositioning is_hover:false"
+				   class="menuButton button right" 
+					 data-dropdown="drop"
+				>
+					<i class="fi-list" />
+				</a>
+				<ul id="drop" class="f-dropdown">
+					<li><a href="./index.html">Home</a></li>				
+					<li><a href="./events.html">Events</a></li>
+					<li><a href="./services.html">Services</a></li>
+					<li><a href="./officers.html">Officers</a></li>
+					<li><a href="./archive.html">Archive</a></li>										
+				</ul>				
 			</nav>
 		</div>	
 
