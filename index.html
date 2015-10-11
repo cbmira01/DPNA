@@ -17,7 +17,22 @@
 		<div class="contain-to-grid fixed topbar">
 			<nav class="top-bar">			
 				<img class="deerLogo hide-for-small-only" border="0" align="Left" src="img/deer-logo-256px.jpeg"/>		
-				<a class="main-logo" href="#"><h4>Deer Park Neighborhood Association</h4></a>
+				
+				<a class="main-logo" href="#"><h4 id="dpnaText">Deer Park Neighborhood Association</h4></a>	
+
+				<a href="#" 
+				   data-options="ignore_repositioning is_hover:false"
+				   class="menuButton button right" 
+					 data-dropdown="drop"
+				>
+					<i class="fi-list" />
+				</a>
+				<ul id="drop" class="f-dropdown">
+					<li><a href="#">This is a link</a></li>
+					<li><a href="#">This is another</a></li>
+					<li><a href="#">Yet another</a></li>
+				</ul>
+				
 			</nav>
 		</div>	
 
@@ -26,13 +41,13 @@
 			<div class="columns small-12 medium-6 large-6 featureColorImage panel" data-equalizer-watch>
 				<figure>
 					<img src="http://lorempixel.com/640/480/city/1" />
-					<figcaption><i>Deer Park basilica at night.</i></figcaption>
+					<figcaption><i>Deer Park Basilica at night.</i></figcaption>
 				</figure> 				
 			</div>
 
 			<div class="columns small-12 medium-6 large-6 featureColorText panel" data-equalizer-watch>
 				<h4>Feature Article Title</h4>
-				<p>This feature article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. </p>
+				<p class="text-justify">This feature article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. </p>
 				<a>Read more...</a>
 			</div>
 		</div>
@@ -106,11 +121,22 @@
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation/foundation.js"></script>
 		<script src="js/foundation/foundation.equalizer.js"></script>
+		<script src="js/foundation/foundation.dropdown.js"></script>		
 		<!-- Other JS plugins can be included here -->
+
+		<!-- Alternate topbar text, turn off panel equalization on small media -->
 		<script>
-			// Following code suggested by Dameian Lott, 
-			//   http://foundation.zurb.com/forum/posts/6492-disable-data-equalizer-for-small
-			$(window).on("load resize",function(e){
+			$(window).on("load resize",function(e) {
+			
+				var dpnaElement = document.getElementById("dpnaText");
+				if ( Foundation.utils.is_small_only() ) {
+					dpnaElement.innerHTML = "DPNA";
+				} else {
+					dpnaElement.innerHTML = "Deer Park Neighborhood Association";
+				}
+
+				// Following code suggested by Dameian Lott, 
+				//   http://foundation.zurb.com/forum/posts/6492-disable-data-equalizer-for-small				
 				var equalizeByMedia = true;
 				if ($(document).width() <= 640) {
 					equalizeByMedia = false;
@@ -123,5 +149,5 @@
 			}); 
 		</script>		
 		
-	</body>
+	</body>	
 </html>

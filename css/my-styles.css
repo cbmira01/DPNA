@@ -16,19 +16,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .deerLogo {
-	margin-left: 1em;
 	height: 4em; 
 	width: 4em;
 }
 
 a.main-logo h4 {
-	margin: 1em;
+	margin-left: 1em;
 	color: white;
 	display: inline;
 }
 
+.menuButton {
+	height: 3.5em;
+	background: transparent;	
+	font-size: 3em;
+}
+
+.menuButton:hover {
+	background: transparent;
+}
+
+.menuButton i {
+	color: white;
+	font-size: 2.75em;
+}
+
 .bumpPastTopbar{
-	margin-top: 5em;
+	margin-top: 3em;
 }
 
 /* Panel Colors
@@ -91,7 +105,7 @@ a.main-logo h4 {
 }
 
 .adGraphics {
-	height: 75%;
+	height: 100%;
 	width: 100%;	
 }
 
