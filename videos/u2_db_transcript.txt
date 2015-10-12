@@ -1,62 +1,210 @@
-U2 - Beautiful day
+WEBVTT FILE
 
+0
+00:00:00.000 --> 00:00:00.000
+[Intro]
+
+0
+00:00:00.000 --> 00:00:00.000
 The heart is a bloom
+
+0
+00:00:00.000 --> 00:00:00.000
 Shoots up through the stony ground
+
+0
+00:00:00.000 --> 00:00:00.000
 There's no room
+
+0
+00:00:00.000 --> 00:00:00.000
 No space to rent in this town
+
+0
+00:00:00.000 --> 00:00:00.000
 You're out of luck
+
+0
+00:00:00.000 --> 00:00:00.000
 And the reason that you had to care
+
+0
+00:00:00.000 --> 00:00:00.000
 The traffic is stuck
+
+0
+00:00:00.000 --> 00:00:00.000
 And you're not moving anywhere
+
+0
+00:00:00.000 --> 00:00:00.000
 You thought you'd found a friend
+
+0
+00:00:00.000 --> 00:00:00.000
 To take you out of this place
+
+0
+00:00:00.000 --> 00:00:00.000
 Someone you could lend a hand
+
+0
+00:00:00.000 --> 00:00:00.000
 In return for grace
 
+0
+00:00:00.000 --> 00:00:00.000
 It's a beautiful day
+
+0
+00:00:00.000 --> 00:00:00.000
 Sky falls you feel like
+
+0
+00:00:00.000 --> 00:00:00.000
 It's a beautiful day
+
+0
+00:00:00.000 --> 00:00:00.000
 Don't let it get away
 
+0
+00:00:00.000 --> 00:00:00.000
 You're on the road
+
+0
+00:00:00.000 --> 00:00:00.000
 But you've got no destination
+
+0
+00:00:00.000 --> 00:00:00.000
 You're in the mud
+
+0
+00:00:00.000 --> 00:00:00.000
 In the maze of her imagination
+
+0
+00:00:00.000 --> 00:00:00.000
 You love this town
+
+0
+00:00:00.000 --> 00:00:00.000
 Even if that doesn't ring true
+
+0
+00:00:00.000 --> 00:00:00.000
 You've been all over
+
+0
+00:00:00.000 --> 00:00:00.000
 And it's been all over you
 
-It's a beautiful day
-Don't let it get away
+0
+00:00:00.000 --> 00:00:00.000
 It's a beautiful day
 
+0
+00:00:00.000 --> 00:00:00.000
+Don't let it get away
+
+0
+00:00:00.000 --> 00:00:00.000
+It's a beautiful day
+
+0
+00:00:00.000 --> 00:00:00.000
 Touch me
+
+0
+00:00:00.000 --> 00:00:00.000
 Take me to that other place
+
+0
+00:00:00.000 --> 00:00:00.000
 Teach me
+
+0
+00:00:00.000 --> 00:00:00.000
 I know I'm not a hopeless case
 
+0
+00:00:00.000 --> 00:00:00.000
 See the world in green and blue
+
+0
+00:00:00.000 --> 00:00:00.000
 See China right in front of you
+
+0
+00:00:00.000 --> 00:00:00.000
 See the canyons broken by cloud
+
+0
+00:00:00.000 --> 00:00:00.000
 See the tuna fleets clearing the sea out
+
+0
+00:00:00.000 --> 00:00:00.000
 See the Bedouin fires at night
+
+0
+00:00:00.000 --> 00:00:00.000
 See the oil fields at first light and
+
+0
+00:00:00.000 --> 00:00:00.000
 See the bird with a leaf in her mouth
+
+0
+00:00:00.000 --> 00:00:00.000
 after the flood all the colors came out
 
+0
+00:00:00.000 --> 00:00:00.000
 It was a beautiful day
+
+0
+00:00:00.000 --> 00:00:00.000
 Don't let it get away
+
+0
+00:00:00.000 --> 00:00:00.000
 Beautiful day
 
+0
+00:00:00.000 --> 00:00:00.000
 Touch me
+
+0
+00:00:00.000 --> 00:00:00.000
 Take me to that other place
+
+0
+00:00:00.000 --> 00:00:00.000
 Reach me
+
+0
+00:00:00.000 --> 00:00:00.000
 I know I'm not a hopeless case
 
+0
+00:00:00.000 --> 00:00:00.000
 What you don't have you don't need it now
+
+0
+00:00:00.000 --> 00:00:00.000
 What you don't know you can feel it somehow
+
+0
+00:00:00.000 --> 00:00:00.000
 What you don't have you don't need it now
+
+0
+00:00:00.000 --> 00:00:00.000
 You don't need it now
 
+0
+00:00:00.000 --> 00:00:00.000
 It was a beautiful day
+
