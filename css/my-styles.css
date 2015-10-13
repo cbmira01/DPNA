@@ -1,7 +1,4 @@
 
-/* Global
-================================ */
-
 
 /* Type
 ================================ */
@@ -126,16 +123,10 @@ footer {
 }
 
 .socialIcon {
-  display: inline-block;
 	font-size: 3em;
+  display: inline;
+  color: silver;
 }
-
-
-
-/* Buttons
-================================= */
-
-
 
 /* Media Queries
 ================================= */
