@@ -18,6 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 .deerLogo {
 	height: 4em; 
 	width: 4em;
+  display: inline;
 }
 
 a.main-logo h4 {
@@ -42,7 +43,7 @@ a.main-logo h4 {
 }
 
 .bumpPastTopbar{
-	margin-top: 3em;
+	margin-top: 5em;
 }
 
 /* Panel Colors
@@ -125,6 +126,7 @@ footer {
 }
 
 .socialIcon {
+  display: inline-block;
 	font-size: 3em;
 }
 
