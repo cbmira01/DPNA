@@ -2,14 +2,15 @@
 DPNA Website optimization 
 
 Methodology
-	- performed testing and optimizations on index page only
-	- used Firefox network timing tool
-	- WAMP server and browser client on the same laptop, 
-			content served via localhost
+	- Testing and optimizations on index page only.
+  - Tested in large-media only.	
+	- Used Firefox network timing tool.
+	- Content served from a WAMP server to a browser client, 
+			both on the on the same laptop, via localhost.
 			
 Metrics
-	- time consumed, data transferred, and total requests
-	- overall goal was to reduce all metrics (lower is better)		
+	- Time consumed, data transferred, and total requests.
+	- Overall goal was to reduce all metrics (lower is better).		
 
 Performance before any optimization
 	- about 2500 ms seconds to load the entire page
@@ -29,7 +30,7 @@ Optimizing steps taken
 		
 Performance after optimizations
 	- about 2500 ms seconds to load the entire page
-	- images from lorempixel typically took about 1200 ms
+	- locally-served images typically took about 1200 ms
 	- empty cache transfer, about 2800 KB
 			(50% JS, 33% images, 15% CSS and other, 51 total requests)
 	- primed cache transfer, about 1300 KB
@@ -37,6 +38,16 @@ Performance after optimizations
 
 Discussion
 	Optimizations resulted in improvements of metrics.
+	
+	Bulk of pre-optimization page loading time is attributed to images 
+	from Lorempixel.
+	
+	Most post-optimization page loading was complete by about ... ms. 
+	Youtube content loading strung total page load time out to about 
+	.... ms. Links to Youtube are expensive in this metric.
+	
+	Testing for responsive design would require testing for all target 
+	media and browsers. That testing was not studied here.
 	
 	Using a WAMP server and an on-board network was an unrealistic 
 	test model for a fully deployed website, because there were no 
