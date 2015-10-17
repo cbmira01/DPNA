@@ -23,7 +23,7 @@
               src="img/deer-logo-256px.jpeg"
               alt="Deerpark logo" />
 
-				<a class="main-logo left" href="#">
+				<a class="main-logo left">
           <h4 id="dpnaText">Deer Park Neighborhood Association</h4>
         </a>
 
@@ -114,7 +114,7 @@
 			<div class="columns small-12 medium-6 large-6 featureColorText panel" data-equalizer-watch>
 				<h4>New Construction in Deer Park</h4>
 				<p class="text-justify">This feature article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Fusce et luctus lectus, sed placerat purus. Donec consequat et metus eu tempor. Nulla mollis massa nec efficitur venenatis. Donec lectus nisl, mollis sodales justo id, tempus tempor ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In in augue vitae ipsum hendrerit tristique. Suspendisse non neque sit amet felis feugiat fermentum. Aliquam eget lectus tristique, rhoncus mi eget, lacinia massa. Nunc sapien nisl, iaculis sed lectus id, porttitor hendrerit justo. Nunc odio est, blandit ac ullamcorper nec, ullamcorper vel orci. Sed vitae tempus erat, et semper nisi. </p>
-				<a>Read more...</a>
+				<a href="#">Read more...</a>
 			</div>
 		</div>
 
@@ -124,21 +124,21 @@
 				<img class="hide-for-small-only" src="http://lorempixel.com/640/480/people/1" alt="Image for people article."/>
 				<h5>People Article</h5>
 				<p>This people article lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget ipsum porta, interdum nulla sed, sagittis ipsum. Quisque finibus euismod sem, vel semper libero pulvinar et. Vivamus mattis nunc ut fermentum sagittis. Vestibulum sit amet dui tortor. </p>
-				<a>Read more...</a>
+				<a href="#">Read more...</a>
 			</div>
 
 			<div class="columns small-12 medium-6 large-4 panel articleColorB" data-equalizer-watch>
 				<img class="hide-for-small-only" src="http://lorempixel.com/640/480/nature/1" alt="Image for nature article." />
 				<h5>Nature Article</h5>
 				<p>This nature article suspendisse pretium finibus enim, et cursus mauris venenatis sed. Nulla venenatis lacus nec enim semper congue. </p>
-				<a>Read more...</a>
+				<a href="#">Read more...</a>
 			</div>
 
 			<div class="columns small-12 medium-6 large-4 panel articleColorC" data-equalizer-watch>
 				<img src="http://lorempixel.com/640/480/food/1" alt="Image for food article." />
 				<h5>Food Article</h5>
 				<p>This food article donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. </p>
-				<a>Read more...</a>
+				<a href="#">Read more...</a>
 			</div>
 
 			<div class="columns small-12 medium-6 large-4 panel articleColorC" data-equalizer-watch>
@@ -152,7 +152,7 @@
 
 			<div class="columns small-12 medium-6 large-4 panel articleColorA left" data-equalizer-watch>
 				<div>
-					<iframe width="auto" height="auto" src="//www.youtube.com/embed/ImKY6TZEyrI" allowfullscreen></iframe>
+					<iframe class="youtubeVideo" src="//www.youtube.com/embed/ImKY6TZEyrI" allowfullscreen></iframe>
 				</div>
 				<h5>Deer Park Fades Away</h5>
 				<p>This music video is offsite donec pellentesque nibh neque, vel vestibulum sapien rhoncus congue. Phasellus ligula sem, maximus sed justo eget, dapibus lobortis odio. Proin ac feugiat massa. Maecenas rhoncus accumsan libero, quis vulputate ligula molestie in. Suspendisse potenti. </p>
@@ -209,7 +209,8 @@
     <script>    
       $(document).ready(function(){
         $('.featureCarousel').slick({
-          dots: true,
+					accessibility: true,
+          dots: false,
           infinite: true,
           autoplay: true,
           autoplayspeed: 3000,

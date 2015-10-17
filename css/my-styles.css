@@ -1,5 +1,24 @@
 
 
+/* Accessibility styling
+================================ */
+*:focus {
+	outline: dashed;
+}
+
+a {
+	outline: none;
+}
+
+a:focus, a:hover {
+	outline: solid;
+	background: invert;
+}
+
+a:active {
+	outline: none;
+}
+
 /* Type
 ================================ */
 h1, h2, h3, h4, h5, h6 {
@@ -93,7 +112,7 @@ a.main-logo h4 {
 	background: #eefcd5;
 }
 
-/* Images
+/* Images and Video 
 ================================ */
 .bloggerPicture {
 	height: 80px;
@@ -117,6 +136,11 @@ a.main-logo h4 {
 
 .onsiteVideo {
 	width: 100%;
+}
+
+.youtubeVideo {
+	width: auto;
+	height: auto;
 }
 
 /* Footer
