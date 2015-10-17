@@ -1,0 +1,47 @@
+
+DPNA Website optimization 
+
+Methodology
+	- performed testing and optimizations on index page only
+	- used Firefox network timing tool
+	- WAMP server and browser client on the same laptop, 
+			content served via localhost
+			
+Metrics
+	- time consumed, data transferred, and total requests
+	- overall goal was to reduce all metrics (lower is better)		
+
+Performance before any optimization
+	- about 2500 ms seconds to load the entire page
+	- images from lorempixel typically took about 1200 ms
+	- empty cache transfer, about 2800 KB
+			(50% JS, 33% images, 15% CSS and other, 51 total requests)
+	- primed cache transfer, about 1300 KB
+			(60% images, 15% CSS, 15% JS and other, 51 total requests)		
+			
+Optimizing steps taken
+	- Lorempixel images were downloaded and served from WAMP.
+	- Normalize, Foundation, and My-styles CSS files were minimized and consolidated.
+	- JQuery and Foundation JavaScript files were minimized and consolidated.	
+	- Javascript from CDN provider was chosen in minimized form.
+	- CSS from CDN provider was not minimized or consolidated.
+	- My-javascript file was not minimized or consolidated.
+		
+Performance after optimizations
+	- about 2500 ms seconds to load the entire page
+	- images from lorempixel typically took about 1200 ms
+	- empty cache transfer, about 2800 KB
+			(50% JS, 33% images, 15% CSS and other, 51 total requests)
+	- primed cache transfer, about 1300 KB
+			(60% images, 15% CSS, 15% JS and other, 51 total requests)
+
+Discussion
+	Optimizations resulted in improvements of metrics.
+	
+	Using a WAMP server and an on-board network was an unrealistic 
+	test model for a fully deployed website, because there were no 
+	real network latencies and variances, and because the web server 
+	and the browser client competed for the same resources. 
+	
+	It is noted that the OGG video used was of smaller size than its
+	MPG original, but that effect on optimization was not studied here.
