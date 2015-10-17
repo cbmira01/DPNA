@@ -26,12 +26,12 @@ a.main-logo h4 {
 
 .menuButton {
 	height: 3.5em;
-	background: transparent;	
+	background: #333;	
 	font-size: 3em;
 }
 
-.menuButton:hover {
-	background: transparent;
+.menuButton:hover, .menuButton:focus {
+	background: #333;
 }
 
 .menuButton i {
@@ -115,6 +115,9 @@ a.main-logo h4 {
 	width: 100%;	
 }
 
+.onsiteVideo {
+	width: 100%;
+}
 
 /* Footer
 ================================= */
