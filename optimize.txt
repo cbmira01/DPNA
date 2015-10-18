@@ -1,58 +1,91 @@
 
-DPNA Website optimization 
+Notes on DPNA Website optimization
+	Calvin Miracle
+	2015.10.17
+
+Introduction
+	This is a study of performance optimization on my Code Louisville
+	student website. 
+	
+	The website is a fictional neighborhood association site, its home page 
+	comprising text, a video served on-site, a video linked from off-site, 
+	several SVG logos, and 13 images linked from Lorempixel. The page uses 
+	Zurb Foundation for responsiveness, Foundation Icons, and a Slick Carousel 
+	image spinner. A small amount of custom JavaScript assists with media 
+	responsiveness and Slick optioning.
+	
+	For this study, a methodology is established, metrics for optimization
+	chosen, and performance measures taken before and after optimization
+	tasks. A discussion follows on the effects of optimization and limitations 
+	of this study.
 
 Methodology
-	- Testing and optimizations on index page only.
-  - Tested in large-media only.	
-	- Used Firefox network timing tool.
-	- Content served from a WAMP server to a browser client, 
-			both on the on the same laptop, via localhost.
+	Testing and optimizations to be performed on the index page only.
+  Testing performed for large media only.	
+	Firefox network timing tool used throughout: timing waterfall graph
+		and empty/primed cache performance graphs.
+	Content served from a WAMP server to a browser client, both on the 
+		on the same laptop, via localhost.
 			
 Metrics
-	- Time consumed, data transferred, and total requests.
-	- Overall goal was to reduce all metrics (lower is better).		
+	Time consumed, data transferred, and total requests.
+	Overall goal is to reduce all metrics (lower is better).		
 
-Performance before any optimization
+Performance measures before any optimization
 	- about 2500 ms seconds to load the entire page
-	- images from lorempixel typically took about 1200 ms
+	- images from lorempixel typically took about 1200 ms to load
 	- empty cache transfer, about 2800 KB
 			(50% JS, 33% images, 15% CSS and other, 51 total requests)
 	- primed cache transfer, about 1300 KB
 			(60% images, 15% CSS, 15% JS and other, 51 total requests)		
 			
 Optimizing steps taken
-	- Lorempixel images were downloaded and served from WAMP.
-	- Normalize, Foundation, and My-styles CSS files were minimized and consolidated.
-	- JQuery and Foundation JavaScript files were minimized and consolidated.	
-	- Javascript from CDN provider was chosen in minimized form.
-	- CSS from CDN provider was not minimized or consolidated.
-	- My-javascript file was not minimized or consolidated.
+	Lorempixel images were downloaded and served from WAMP.
+	
+	Foundation and Foundation Icons CSS files were minimized.
+		CSS from CDN provider was not minimized.
+	
+	Foundation JavaScript files were minimized.	
+		Javascript from CDN provider was obtained in minimized form.
+		My-javascript file was not minimized.
 		
-Performance after optimizations
-	- about 2500 ms seconds to load the entire page
-	- locally-served images typically took about 1200 ms
+Performance measures after optimizations
+	- about 1900 ms seconds to load the entire page
+	- locally-served images typically took about 100 ms to load
 	- empty cache transfer, about 2800 KB
-			(50% JS, 33% images, 15% CSS and other, 51 total requests)
+			(50% JS, 33% images, 15% CSS and other, 36 total requests)
 	- primed cache transfer, about 1300 KB
-			(60% images, 15% CSS, 15% JS and other, 51 total requests)
+			(60% images, 15% CSS, 15% JS and other, 36 total requests)
 
 Discussion
-	Optimizations resulted in improvements of metrics.
+	Optimizations resulted in improvements, but not in all metrics. Page
+	loading time was slightly improved, image loading time was greatly 
+	improved, total requests were improved, but data transfer was not 
+	improved at all.
 	
-	Bulk of pre-optimization page loading time is attributed to images 
-	from Lorempixel.
+	Bulk of pre-optimization page loading time is attributed to image 
+	linking to Lorempixel. Serving these images directly allowed most page 
+	loading to complete by about 400 ms. Youtube content linking strung 
+	total page load time out to about 1900 ms. Links to Youtube are 
+	expensive in this metric.
 	
-	Most post-optimization page loading was complete by about ... ms. 
-	Youtube content loading strung total page load time out to about 
-	.... ms. Links to Youtube are expensive in this metric.
+	Naive minifications and consolidations via online tools such as
+	http://javascript-minifier.com/ and http://cssminifier.com/ 
+	broke CSS and JavaScript function. Because of this, effects of CSS 
+	and script consolidations are not considered here, and minified
+	Foundation CSS and script were obtained from the Zurb project. I 
+	need to inquire further about use and limitations of these tools.
 	
-	Testing for responsive design would require testing for all target 
-	media and browsers. That testing was not studied here.
+	Serving images directly accounted for 12 requests eliminated.
+	
+	Testing for responsive design and testing for all target media and 
+	browsers was not studied here.
 	
 	Using a WAMP server and an on-board network was an unrealistic 
 	test model for a fully deployed website, because there were no 
 	real network latencies and variances, and because the web server 
-	and the browser client competed for the same resources. 
+	and the browser client competed for the same CPU and disk I/O 
+	resources. 
 	
-	It is noted that the OGG video used was of smaller size than its
+	It is noted that the on-site OGG video was of smaller size than its 
 	MPG original, but that effect on optimization was not studied here.
