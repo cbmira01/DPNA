@@ -7,7 +7,7 @@ Introduction
 	This is a study of performance optimization on my Code Louisville
 	student website. 
 	
-	The website is a fictional neighborhood association site, its home page 
+	The website is a fictional neighborhood association web site, its home page 
 	comprising text, a video served on-site, a video linked from off-site, 
 	several SVG logos, and 13 images linked from Lorempixel. The page uses 
 	Zurb Foundation for responsiveness, Foundation Icons, and a Slick Carousel 
@@ -21,19 +21,21 @@ Introduction
 
 Methodology
 	Testing and optimizations to be performed on the index page only.
-  Testing performed for large media only.	
+  Testing performed on large media displays only.	
 	Firefox network timing tool used throughout: timing waterfall graph
 		and empty/primed cache performance graphs.
 	Content served from a WAMP server to a browser client, both on the 
 		on the same laptop, via localhost.
 			
 Metrics
-	Time consumed, data transferred, and total requests.
-	Overall goal is to reduce all metrics (lower is better).		
+	Time consumed (ms), data transferred (KB), and total requests (count).
+	Overall goal is to reduce all metrics (lower is better).	
+	Metrics reported to two significant digits, not considered below 
+		this level.	
 
-Performance measures before any optimization
+Performance measures before optimizations
 	- about 2500 ms seconds to load the entire page
-	- images from lorempixel typically took about 1200 ms to load
+	- images from Lorempixel typically took about 1200 ms to load
 	- empty cache transfer, about 2800 KB
 			(50% JS, 33% images, 15% CSS and other, 51 total requests)
 	- primed cache transfer, about 1300 KB
@@ -58,10 +60,10 @@ Performance measures after optimizations
 			(60% images, 15% CSS, 15% JS and other, 36 total requests)
 
 Discussion
-	Optimizations resulted in improvements, but not in all metrics. Page
-	loading time was slightly improved, image loading time was greatly 
-	improved, total requests were improved, but data transfer was not 
-	improved at all.
+	Optimizations resulted in improvements, but not in all metrics. 
+	Image loading time was greatly improved, total requests was
+	improved, page loading time was slightly improved, but data 
+	transfer time was not improved at all.
 	
 	Bulk of pre-optimization page loading time is attributed to image 
 	linking to Lorempixel. Serving these images directly allowed most page 
@@ -74,7 +76,8 @@ Discussion
 	broke CSS and JavaScript function. Because of this, effects of CSS 
 	and script consolidations are not considered here, and minified
 	Foundation CSS and script were obtained from the Zurb project. I 
-	need to inquire further about use and limitations of these tools.
+	need to inquire further about proper use and limitations of these 
+	tools.
 	
 	Serving images directly accounted for 12 requests eliminated.
 	

@@ -73,7 +73,9 @@ a.main-logo h4 {
 }
 
 .articleColorA {
-	background: #e6cef1;	
+	/*background: #e6cef1;	*/
+	background: white;
+	border-style: none;
 }
 
 .articleColorB {
