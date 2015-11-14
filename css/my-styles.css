@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: black;
 }
 
-/* Topbar
+/* Top-bar
 ================================ */
 .top-bar {
 	height: 4em;
@@ -58,7 +58,7 @@ a.main-logo h4 {
 	font-size: 2.75em;
 }
 
-.bumpPastTopbar{
+.bumpPastTopbar {
 	margin-top: 5em;
 }
 
@@ -85,6 +85,18 @@ a.main-logo h4 {
 	background: #def8b1;	
 }
 
+.bloggerPanelA {
+	background: #e6cef1;
+}
+
+.bloggerPanelB {
+	background: #fff3b6;
+}
+
+.bloggerPanelC {
+	background: #def8b1;
+}
+
 .officerPanelA {	
 	background: #c9a0dc;
 }
@@ -103,14 +115,6 @@ a.main-logo h4 {
 
 .boardMemeberPanelC {	
 	background: #def8b1;
-}
-
-.bloggerPanelA {
-	background: #fff9d8;
-}
-
-.bloggerPanelB {
-	background: #eefcd5;
 }
 
 /* Images and Video 
@@ -162,17 +166,12 @@ footer {
 
 // Small screens,  up to 640px 
 @media only screen and (max-width: 40em) { 
-
 }
 
 // Medium screens, 641px to 1024px 
 @media only screen and (min-width: 40.063em) and (max-width: 64em) { 
-
 }
 
 // Large screens,  1025px to 1440px and larger..
 @media only screen and (min-width: 64.063em) { 
-
 }
-
-
