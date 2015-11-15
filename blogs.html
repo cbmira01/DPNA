@@ -4,14 +4,14 @@
 		<title>Blogs - DPNA</title>
 		
 		<meta charset="utf-8">
-		
+
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/foundation.css">
 		<link rel="stylesheet" href="foundation-icons/foundation-icons.css">
 		<link rel="stylesheet" href="css/my-styles.css" >		
-	</head>
+  </head>
 
-	<body>
+	<body ng-app="blogApp">
 		<!-- Top Bar -->
 		<div class="contain-to-grid fixed topbar">
 			<nav class="top-bar">
@@ -38,23 +38,20 @@
 				</ul>
 			</nav>
 		</div>
+    
+    <div class="row bumpPastTopbar">
+      <h4>Deer Park Neighborhood Association blogs</h4>
+    </div>
+            
+    <div class="row">Is Angular active? This should read as "7" -->  {{5 + 2}}</div>
 
-		<!-- Dispatch to blog content -->
-	  <div class="row bumpPastTopbar">
-			<h4>Deer Park Neighborhood Association blogs</h4>
-		</div>
-
-		<div class="row" data-equalizer>
-			<div class="columns small-12 medium-6 large-4 panel bloggerPanelA left" data-equalizer-watch>			
-			  <img class="bloggerPicture" src="img/steves_picture.svg" alt="A picture of Steve the blogger."/>
-				<a href="blogs/steve/blog.html">Steve's Blog</a>
-			</div>			
-			
-			<div class="columns small-12 medium-6 large-4 panel bloggerPanelB left" data-equalizer-watch>
-			  <img class="bloggerPicture" src="img/shirleys_picture.svg" alt="A picture of Shirley the blogger."/>			
-				<a href="blogs/shirley/blog.html">Shirley's Blog</a>		
-			</div>										
-		</div>		
+    <div class="row">
+      <a href="#/">Blogbase</a>
+      <a href="#/bloggers">Link to Bloggers</a>
+    </div>
+    
+		<!-- Blogger application content delivered here -->    
+    <div class="row" ng-view></div>
 		
 		<!-- Footer -->
 		<footer class="row">
@@ -65,10 +62,13 @@
         <p>
 		</footer>  		
 
-		<!-- JavaScript support: JQuery, Foundation, Slick, local -->
+		<!-- JavaScript support: JQuery, Angular, Foundation, Slick, local -->
 		<script src="js/vendor/jquery.js"></script>
+		<script src="js/angular/angular.min-1.4.7.js"></script>
+    <script src="js/angular/angular-route.min-1.4.7.js"></script>    
 		<script src="js/foundation.min.js"></script>		
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.8/slick.min.js"></script>
     <script src="js/my-javascript.js"></script>
+    <script src="blogger-app.js"></script>
 	</body>
 </html>
