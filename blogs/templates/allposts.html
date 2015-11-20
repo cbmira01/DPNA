@@ -1,15 +1,16 @@
 
 <div class="row" data-equalizer>
-  <div class="columns small-12 medium-6 large-4 panel articleColorA left" 
+  <div class="columns small-12 medium-6 large-4 panel left {{myColorCycle($index)}}" 
        data-equalizer-watch 
        ng-repeat="post in posts"
        my-reflow-panels>
-       
-      <img class="hide-for-small-only" src="{{post.image}}" alt="Blogpost picture." />
+
+      <img class="hide-for-small-only" src="{{myImageLink(post.image)}}" alt="Blogpost picture." />
+      <p>{{myImageLink(post.image)}}</p>
       <p>{{post.date}}</p>
       <p>{{post.name}}</p>
       <p>{{post.title}}</p>
       <p>{{post.text}}</p>
-    </div>   
   </div>
 </div>
+ 

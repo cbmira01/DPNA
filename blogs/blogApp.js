@@ -3,25 +3,78 @@
   blogApp, an Angular demonstration for Code Louisville
     by Calvin Miracle, Louisville KY
 
-  Thanks to K. Scott Allen for an excellent Angular tutorial
+  Thanks to K. Scott Allen for an excellent Angular tutorial.
     https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
+    
+  Thanks to ... for idea on Foundation panel reflow.
+    ...
+    
+  Thanks to ... for idea on color cycling.
+    ...
+    
+  Thanks to ... for idea on proper triggering on DOM completion.
+    ...    
 */
 
   var blogApp = angular.module("blogApp", ["ngRoute", "ngStorage"])
-    .directive('myReflowPanels', function() {
+  
+.directive('myReflowPanels', function($timeout) {
+  return {
+    link: function(scope, element, attrs) {
+
+        $timeout(function() {
+          $(document).foundation("reflow");
+        });
+
+    }
+  };
+});  
+  
+/*   //......
+  .directive("myReflowPanels", ['$timeout', function (timer) {
+    return {
+        link: function (scope, elem, attrs, ctrl) {
+            var reflow = function () {
+              $(document).foundation("reflow");
+            } 
+            //$timeout(reflow, 0);
+            attrs.$observe("myReflowPanels", reflow);
+        } 
+    } 
+  }]); */
+ 
+  
+/*     .directive('myReflowPanels', function() {
       return function(scope, element, attrs) {
         if (scope.$last) setTimeout(function() {
           $(document).foundation('reflow');
-        }, 1);
+        }, 100);
       };
-    });
+    }); */
 
   blogApp.controller("HomeController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
     $scope.bloggers = $sessionStorage.bloggers;   
   }]);
 
-  blogApp.controller("AllPostsController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
-    $scope.posts = $sessionStorage.posts;
+  blogApp.controller("AllPostsController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {  
+    $scope.posts = $sessionStorage.posts; 
+
+    // Cycle Foundation panel colors.
+    $scope.myColorCycle = function(index) {
+      // choose these colors from local CSS styling
+      var colors = ["articleColorA", "articleColorB", "articleColorC"];
+      return ( colors[index%(colors.length)] );
+    };
+    
+    // Handle case of no image provided.
+    $scope.myImageLink = function(tryImageLink) {
+      if (tryImageLink === "") {
+        return "https://commons.wikimedia.org/wiki/File%3ANo_image_available.svg"
+      } else {
+        return tryImageLink;
+      }
+    };
+
   }]);
   
   blogApp.controller("BloggersController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
