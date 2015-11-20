@@ -2,10 +2,10 @@
 <div class="row" data-equalizer>
   <div class="columns small-12 medium-6 large-4 panel articleColorA" 
       data-equalizer-watch 
-      ng-repeat="blogger in bloggers" 
-      reflow-foundation-panels>
+      ng-repeat="blogger in bloggers"
+      my-reflow-panels>
       
-    <img class="hide-for-small-only" src="{{blogger.photolink}}" alt="Picture of {{blogger.name}}." height="100"/>
+    <img class="hide-for-small-only" src="{{blogger.photolink}}" alt="Picture of {{blogger.name}}."/>
     <h5>{{blogger.name}}</h5>
     <p>{{blogger.slogan}}</p>
   </div>

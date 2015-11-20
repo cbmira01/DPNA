@@ -8,28 +8,20 @@
 */
 
   var blogApp = angular.module("blogApp", ["ngRoute", "ngStorage"])
-    .directive('reflowFoundationPanels', function() {
-        return function(scope, element, attrs) {
-            if (scope.$last) setTimeout(function(){
-                scope.$emit('reflowFoundationPanels', element, attrs);
-            }, 1);
-        };
+    .directive('myReflowPanels', function() {
+      return function(scope, element, attrs) {
+        if (scope.$last) setTimeout(function() {
+          $(document).foundation('reflow');
+        }, 1);
+      };
     });
 
   blogApp.controller("HomeController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
-    $scope.bloggers = $sessionStorage.bloggers;  
-    
-    $scope.$on('reflowFoundationPanels', function(scope, element, attrs){
-        $(document).foundation('equalizer','reflow');
-    });    
+    $scope.bloggers = $sessionStorage.bloggers;   
   }]);
 
   blogApp.controller("AllPostsController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
     $scope.posts = $sessionStorage.posts;
-    
-    $scope.$on('reflowFoundationPanels', function(scope, element, attrs){
-        $(document).foundation('equalizer','reflow');
-    });       
   }]);
   
   blogApp.controller("BloggersController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
