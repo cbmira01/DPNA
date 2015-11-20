@@ -1,0 +1,15 @@
+
+<div class="row" data-equalizer>
+  <div class="columns small-12 medium-6 large-4 panel articleColorA" 
+       data-equalizer-watch 
+       ng-repeat="post in posts" 
+       reflow-foundation-panels>
+       
+      <img class="hide-for-small-only" src="{{post.image}}" alt="Blogpost picture."/>
+      <p>{{post.date}}</p>
+      <p>{{post.name}}</p>
+      <p>{{post.title}}</p>
+      <p>{{post.text}}</p>
+    </div>   
+  </div>
+</div>

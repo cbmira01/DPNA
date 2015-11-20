@@ -7,32 +7,52 @@
     https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
 */
 
-  var blogApp = angular.module("blogApp", ["ngRoute", "ngStorage"]);
+  var blogApp = angular.module("blogApp", ["ngRoute", "ngStorage"])
+    .directive('reflowFoundationPanels', function() {
+        return function(scope, element, attrs) {
+            if (scope.$last) setTimeout(function(){
+                scope.$emit('reflowFoundationPanels', element, attrs);
+            }, 1);
+        };
+    });
 
-  blogApp.controller("HomeController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
-    $scope.$storage = $sessionStorage;
-    $scope.message = "You're now on the HOME channel...";
+  blogApp.controller("HomeController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
+    $scope.bloggers = $sessionStorage.bloggers;  
+    
+    $scope.$on('reflowFoundationPanels', function(scope, element, attrs){
+        $(document).foundation('equalizer','reflow');
+    });    
   }]);
 
+  blogApp.controller("AllPostsController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
+    $scope.posts = $sessionStorage.posts;
+    
+    $scope.$on('reflowFoundationPanels', function(scope, element, attrs){
+        $(document).foundation('equalizer','reflow');
+    });       
+  }]);
+  
   blogApp.controller("BloggersController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
-    $scope.$storage = $sessionStorage;
-    $scope.message = "Now you're on the BLOGGERS channel..";
+
   }]);
 
   blogApp.controller("ResetController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
-    //$sessionStorage.$reset();
-    $scope.$storage = $sessionStorage;
 
     var bloggers = [
-      {name: "Steve",
+      {name: "Steve's Sports Bar",
        slogan: "I really enjoy sports!",
        photolink: "http://i.istockimg.com/file_thumbview_approve/13530019/6/stock-photo-13530019-happy-mature-man-with-a-blank-name-tag-against-white.jpg"
       },
 
-      {name: "Shirley",
+      {name: "Shirley's Runway",
        slogan: "I write about fashion..",
        photolink: "http://i.istockimg.com/file_thumbview_approve/13529344/6/stock-photo-13529344-portrait-of-a-laughing-mature-female-against-white.jpg"
-      }
+      },
+      
+      {name: "Sam's History Blog",
+       slogan: "I blog on neighborhood history.",
+       photolink: "http://images.freeimages.com/images/previews/fc7/an-old-man-1435337.jpg"
+      }      
     ];
 
     var posts = [
@@ -70,12 +90,10 @@
         title: "New look for Deer Park",
         text: "Check out this interesting hair accessory! Third post for me.",
         image: "http://images.lacarmina.com/130325_tokyo_steampunk_club_steam_garden_party_fashion_japan_13.jpg"
-      },
+      }
     ];
 
     $sessionStorage.bloggers = bloggers;
-    $sessionStorage.posts = posts;
-
     $scope.message = "blogApp initial data has been reset.";
   }]);
 
@@ -89,6 +107,10 @@
         templateUrl: "templates/bloggers.html",
         controller: "BloggersController"
       })
+      .when("/allposts", {
+        templateUrl: "templates/allposts.html",
+        controller: "AllPostsController"
+      })      
       .when("/reset", {
         templateUrl: "templates/reset.html",
         controller: "ResetController"
