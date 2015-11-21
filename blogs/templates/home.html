@@ -1,11 +1,10 @@
 
-<div class="row" data-equalizer>
-  <div class="columns small-12 medium-6 large-4 panel articleColorA" 
+<div class="row" data-equalizer my-reflow-panels>
+  <div class="columns small-12 medium-6 large-4 panel left {{myColorCycle($index)}}" 
       data-equalizer-watch 
-      ng-repeat="blogger in bloggers"
-      my-reflow-panels>
+      ng-repeat="blogger in bloggers">
       
-    <img class="hide-for-small-only" src="{{blogger.photolink}}" alt="Picture of {{blogger.name}}."/>
+    <img class="hide-for-small-only" src="{{myImageLink(blogger.photolink)}}" alt="Picture of {{blogger.name}}."/>
     <h5>{{blogger.name}}</h5>
     <p>{{blogger.slogan}}</p>
     <a href="#">Read Postings</a>

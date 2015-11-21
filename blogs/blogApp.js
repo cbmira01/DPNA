@@ -3,23 +3,39 @@
   blogApp, an Angular demonstration for Code Louisville
     by Calvin Miracle, Louisville KY
 
+  This application can do the following things:
+    - list all bloggers and their photos;
+    - list all posts from all bloggers;
+    - list all posts from a particular blogger;
+    - read a blog post in detail;
+    - add and delete bloggers;
+    - add and delete posts;
+    - demonstrate browser session storage for persistence;
+    - reset persistent data back to an initial state.
+
   Thanks to K. Scott Allen for an excellent Angular tutorial.
     https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
-    
+
   Thanks to Thomas Kilian for how to handle "DOM ready for Foundation reflow".
     http://stackoverflow.com/questions/12240639/how-can-i-run-a-directive-after-the-dom-has-finished-rendering/12243086#12243086
-    
+
   Thanks to rchawdry for an idea contributing to color cycling.
     http://stackoverflow.com/questions/24873335/ng-repeat-passing-index-value-to-a-function/24874018#24874018
-    
+
+  Thanks to Anders Ekdahl for advice on Angular factories.
+    http://stackoverflow.com/a/15026440
+
   Thanks to "briguy37" for Javascript UUID function.
-    http://jsfiddle.net/briguy37/2mvfd/       
+    http://jsfiddle.net/briguy37/2mvfd/
 */
 
+  "use strict";
+
   var blogApp = angular.module("blogApp", ["ngRoute", "ngStorage"])
-  
+
+
   // Directive to handle reflow rendering of Foundation panels.
-  .directive('myReflowPanels', function($timeout) {
+  .directive("myReflowPanels", function($timeout) {
       return {
         link: function(scope, element, attrs) {
           $timeout(function() {
@@ -27,41 +43,107 @@
           });
         }
       };
-  });  
+  });
+
+
+  blogApp.config(function($routeProvider) {
+      $routeProvider
+        .when("/", {
+          templateUrl: "templates/home.html",
+          controller: "HomeController"
+        })
+        .when("/bloggers", {
+          templateUrl: "templates/bloggers.html",
+          controller: "BloggersController"
+        })
+        .when("/allposts", {
+          templateUrl: "templates/allposts.html",
+          controller: "AllPostsController"
+        })
+        .when("/reset", {
+          templateUrl: "templates/reset.html",
+          controller: "ResetController"
+        })
+        .otherwise({redirectTo: "/"});
+  });
   
-  blogApp.controller("HomeController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {   
-      $scope.bloggers = $sessionStorage.bloggers;   
-  }]);
 
-  blogApp.controller("AllPostsController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {  
-    
-      $scope.posts = $sessionStorage.posts; 
+  // This factory provides support functions for all controllers.
+  blogApp.factory('myServices', function() {
+      return {
+          // Cycle through colors for Foundation panels.
+          facColorCycle: function(index) {
+            // Colors are chosen from local CSS definitions.
+            var colors = ["articleColorA", "articleColorB", "articleColorC"];
+            return ( colors[index%(colors.length)] );
+          },
 
-      // Cycle Foundation panel colors.
-      $scope.myColorCycle = function(index) {
-        // choose these colors from local CSS styling
-        var colors = ["articleColorA", "articleColorB", "articleColorC"];
-        return ( colors[index%(colors.length)] );
+          // Handle case of no image provided.
+          facImageLink: function(tryImageLink) {
+            if (tryImageLink === "") {
+              return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+            } else {
+              return tryImageLink;
+            }
+          }
+      }; // end return
+  });
+
+
+  blogApp.controller("HomeController",
+                    ["$scope",
+                     "$sessionStorage",
+                     "myServices",
+                     function($scope, $sessionStorage, myServices) {
+
+      $scope.bloggers = $sessionStorage.bloggers;
+      
+      $scope.myColorCycle = function(index) {        
+        return myServices.facColorCycle(index);
+      };
+
+      $scope.myImageLink = function(tryImageLink) {
+        return myServices.facImageLink(tryImageLink);
       };
       
-      // Handle case of no image provided.
+  }]);
+
+
+  blogApp.controller("AllPostsController",
+                    ["$scope",
+                     "$sessionStorage",
+                     "myServices",
+                     function($scope, $sessionStorage, myServices) {
+
+      $scope.posts = $sessionStorage.posts;
+
+      $scope.myColorCycle = function(index) {
+        return myServices.facColorCycle(index);
+      };
+
       $scope.myImageLink = function(tryImageLink) {
-        if (tryImageLink === "") {
-          return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
-        } else {
-          return tryImageLink;
-        }
+        return myServices.facImageLink(tryImageLink);
       };
 
   }]);
-  
-  blogApp.controller("BloggersController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
+
+
+  blogApp.controller("BloggersController", 
+                    ["$scope", 
+                     "$sessionStorage",
+                     "myServices",                     
+                     function($scope, $sessionStorage, myServices) {
 
   }]);
 
+
   // ResetController provides starting data for app demonstration.
-  blogApp.controller("ResetController", ["$scope", "$sessionStorage", function($scope, $sessionStorage) {
-    
+  blogApp.controller("ResetController",
+                    ["$scope",
+                     "$sessionStorage",
+                     "myServices",
+                     function($scope, $sessionStorage, myServices) {
+
       $sessionStorage.$reset();
 
       var bloggers = [
@@ -74,12 +156,12 @@
          slogan: "I write about fashion..",
          photolink: "http://i.istockimg.com/file_thumbview_approve/13529344/6/stock-photo-13529344-portrait-of-a-laughing-mature-female-against-white.jpg"
         },
-        
+
         {name: "Sam's History Blog",
          slogan: "I blog on neighborhood history.",
          photolink: "http://images.freeimages.com/images/previews/fc7/an-old-man-1435337.jpg"
-        }      
-      ];
+        }
+      ];  // end bloggers
 
       var posts = [
         { UUID: "7f0c32a4-ef94-4e05-a284-50eb2f63c305",
@@ -117,31 +199,9 @@
           text: "Check out this interesting hair accessory! Third post for me. Pellentesque urna libero, fringilla et arcu eget, dignissim interdum libero. Pellentesque urna libero, vulputate id tortor et, aliquam porttitor nibh. Sed at efficitur enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam vel malesuada velit, quis tempus purus. Suspendisse faucibus elit non iaculis tincidunt. Curabitur blandit sem vitae dignissim bibendum. Donec et rutrum justo. In hac habitasse platea dictumst. Pellentesque ut commodo lectus.",
           image: "http://images.lacarmina.com/130325_tokyo_steampunk_club_steam_garden_party_fashion_japan_13.jpg"
         }
-      ];
+      ]; // end posts
 
       $sessionStorage.bloggers = bloggers;
       $sessionStorage.posts = posts;
       $scope.message = "blogApp initial data has been reset.";
   }]);
-
-  blogApp.config(function($routeProvider) {
-      $routeProvider
-        .when("/", {
-          templateUrl: "templates/home.html",
-          controller: "HomeController"
-        })
-        .when("/bloggers", {
-          templateUrl: "templates/bloggers.html",
-          controller: "BloggersController"
-        })
-        .when("/allposts", {
-          templateUrl: "templates/allposts.html",
-          controller: "AllPostsController"
-        })      
-        .when("/reset", {
-          templateUrl: "templates/reset.html",
-          controller: "ResetController"
-        })
-        .otherwise({redirectTo: "/"});
-  });
-
