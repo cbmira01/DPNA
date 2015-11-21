@@ -56,13 +56,13 @@
           templateUrl: "templates/home.html",
           controller: "HomeController"
         })
-        .when("/bloggers", {
-          templateUrl: "templates/bloggers.html",
-          controller: "BloggersController"
-        })
         .when("/add-blogger", {
           templateUrl: "templates/add-blogger.html",
           controller: "AddBloggerController"
+        })
+        .when("/add-post", {
+          templateUrl: "templates/add-post.html",
+          controller: "AddPostController"
         })        
         .when("/allposts", {
           templateUrl: "templates/allposts.html",
@@ -146,29 +146,29 @@
   }]);
 
 
-  // Allows for adding or deleting bloggers.
-  blogApp.controller("BloggersController", 
+  blogApp.controller("AddBloggerController", 
                     ["$scope", 
+                     "$location",                     
                      "$sessionStorage",
                      "myServices",                     
-                     function($scope, $sessionStorage, myServices) {
+                     function($scope, $location, $sessionStorage, myServices) {
                        
-$scope.message = "You're editing bloggers";
-
+$scope.message = "You're adding a blogger";
+// $location.path("/???");
 
   }]);
   
   
   // Dialog for collecting and vetting new blogger information.
-  blogApp.controller("AddBloggerController", 
+  blogApp.controller("AddPostController", 
                     ["$scope", 
                      "$location", 
                      "$sessionStorage",
                      "myServices",                     
                      function($scope, $location, $sessionStorage, myServices) {
                        
-$scope.message = "You're adding a blogger...";
-// $location.path("/bloggers");
+$scope.message = "You're adding a post...";
+// $location.path("/???");
 
   }]);  
 
