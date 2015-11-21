@@ -10,8 +10,12 @@
     - read a blog post in detail;
     - add and delete bloggers;
     - add and delete posts;
-    - demonstrate browser session storage for persistence;
     - reset persistent data back to an initial state.
+    
+  This application demonstrates the following things:
+    - browser session-storage for persistence;  
+    - color cycling on Foundation panels;
+    - successful application of Foundation attributes after Angular DOM construction.
 
   Thanks to K. Scott Allen for an excellent Angular tutorial.
     https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
@@ -144,21 +148,25 @@
                      "myServices",
                      function($scope, $sessionStorage, myServices) {
 
-      $sessionStorage.$reset();
+      delete $sessionStorage.bloggers;
+      delete $sessionStorage.posts;
 
       var bloggers = [
         {name: "Steve's Sports Bar",
          slogan: "I really enjoy sports!",
+         resume: "Energetic professional with extensive experience working closely with physicians, families, and peers. Recognized for ability to gain trust and credibility and for developing long-lasting relationships with patients. Experienced in triaging, diagnosing/treating patients, and working effectively as a team member while assuming a leadership role within an organization.",
          photolink: "http://i.istockimg.com/file_thumbview_approve/13530019/6/stock-photo-13530019-happy-mature-man-with-a-blank-name-tag-against-white.jpg"
         },
 
         {name: "Shirley's Runway",
          slogan: "I write about fashion..",
+         resume: "Innovative, financial professional with experience in accounting, financial and operational analysis. Success in month-end close accounting, budgeting, variance analysis, trend analysis, financial and productivity reporting. Strong record using financial systems including PeopleSoft, Cognos, and SAP. Energetic self-starter with a team-mined attitude and customer-oriented leadership capabilities.",
          photolink: "http://i.istockimg.com/file_thumbview_approve/13529344/6/stock-photo-13529344-portrait-of-a-laughing-mature-female-against-white.jpg"
         },
 
         {name: "Sam's History Blog",
          slogan: "I blog on neighborhood history.",
+         resume: "Self-motivated and goal-oriented professional with natural leadership and communication skills. Wide-range of professional experiences in education, management, training and recruiting. Passionate about leading and motivating both associates and colleagues. Solid background in oral and written communication, preparation and delivery of presentations, interpersonal skills, and creative problem solving.",
          photolink: "http://images.freeimages.com/images/previews/fc7/an-old-man-1435337.jpg"
         }
       ];  // end bloggers
