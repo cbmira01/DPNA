@@ -1,16 +1,16 @@
-
+ 
 <div class="row" data-equalizer my-reflow-panels>
-  <div class="columns small-12 medium-6 large-4 panel left {{myColorCycle($index)}}" 
+  <div class="columns small-12 medium-6 large-4 panel left {{colorCycle($index)}}" 
       data-equalizer-watch 
-      ng-repeat="blogger in bloggers">
+      ng-repeat="(bloggerName, bloggerData) in bloggers">
       
-    <img class="hide-for-small-only" src="{{myImageLink(blogger.photolink)}}" alt="Picture of {{blogger.name}}."/>
-    <h5>{{blogger.name}}</h5>
-    <p>{{blogger.slogan}}</p>
+    <img class="hide-for-small-only" src="{{imageLink(bloggerData.photolink)}}" alt="Picture of {{bloggerName}}."/>
+    <h5>{{bloggerName}}</h5>
+    <p>{{bloggerData.slogan}}</p>
 
     <div class="row">
       <a href="#" class="button tiny">Read postings</a>
-      <a href="#" class="button tiny">Delete blogger</a>
+      <a href="#" ng-click="deleteBlogger(bloggerName)" class="button tiny">Delete blogger</a>
     </div>    
   </div>
 </div>
