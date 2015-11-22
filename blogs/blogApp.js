@@ -178,7 +178,38 @@
                      "myServices",
                      function($scope, $location, $sessionStorage, myServices) {
 
+      $scope.bloggers = $sessionStorage.bloggers;
       $scope.message = "Add a blogger";
+      
+      $scope.newBloggerName = "";
+      $scope.newSlogan = "";
+      $scope.newResume = "";
+      $scope.newImageLink = "";
+
+      $scope.createBlogger = function() {
+          if ($scope.newBloggerName === "" || $scope.bloggers[$scope.newBloggerName]) {
+              $location.path("/");
+              return;
+          }
+
+          if ($scope.newSlogan === "") {
+              $scope.newSlogan = "A neighborhood blogger.";
+          }
+
+          if ($scope.newResume === "") {
+              $scope.newResume = "Probably a pretty good person!";
+          }
+
+          $scope.bloggers[$scope.newBloggerName] = {
+              name: $scope.newBloggerName,
+              slogan: $scope.newSlogan,
+              resume: $scope.newResume,
+              photolink: $scope.newImageLink
+          };
+          
+          $sessionStorage.bloggers = $scope.bloggers;
+          $location.path("/");
+      };      
   }]);
 
 
@@ -192,15 +223,20 @@
 
       $scope.bloggers = $sessionStorage.bloggers;
       $scope.posts = $sessionStorage.posts;
+      $scope.message = "Add a post";      
 
       $scope.defaultBloggerName = Object.keys($scope.bloggers)[0];  // just get the first blogger
       $scope.newBloggerName = "";
       $scope.newTitle = "";
       $scope.newText = "";
       $scope.newImageLink = "";
-      $scope.message = "Add a post";
 
       $scope.submitPost = function() {
+          if ($scope.newTitle === "") {
+              $location.path("/allposts");
+              return;
+          }
+          
           var todaysDate = new Date();
           var uuid = generateUUID();
 

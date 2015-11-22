@@ -7,7 +7,7 @@
       <div class="row">
         <div class="large-12 columns">
           <label>New blogger's name
-            <input type="text"/>
+            <input type="text" ng-model="newBloggerName"/>
           </label>
         </div>
       </div>
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="large-12 columns">
           <label>Blogger's slogan
-            <input type="text"/>
+            <input type="text" ng-model="newSlogan"/>
           </label>
         </div>
       </div>
@@ -23,7 +23,7 @@
       <div class="row">
         <div class="large-12 columns">
           <label>Image link
-            <input type="text"/>
+            <input type="text" ng-model="newImageLink"/>
           </label>
         </div>
       </div>
@@ -31,13 +31,13 @@
       <div class="row">
         <div class="large-12 columns">
           <label>Blogger brief resume
-            <textarea></textarea>
+            <textarea ng-model="newResume"></textarea>
           </label>
         </div>
       </div>
       
     </form>
 
-    <a href="#" class="button tiny">Create Blogger</a>
+    <a href="#" ng-click="createBlogger()" class="button tiny" target="_self">Create Blogger</a>
   
 </div>
