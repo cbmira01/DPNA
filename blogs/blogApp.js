@@ -183,7 +183,7 @@
                      "myServices",                     
                      function($scope, $location, $sessionStorage, myServices) {
                        
-$scope.message = "You're adding a blogger";
+      $scope.message = "Add a blogger";
 // $location.path("/???");
 
   }]);
@@ -197,7 +197,7 @@ $scope.message = "You're adding a blogger";
                      "myServices",                     
                      function($scope, $location, $sessionStorage, myServices) {
                        
-$scope.message = "You're adding a post...";
+      $scope.message = "Add a post";
 // $location.path("/???");
 
   }]);  

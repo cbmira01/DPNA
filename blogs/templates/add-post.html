@@ -1,16 +1,47 @@
 
 <div class="row" my-reflow-panels>
   <h4>{{message}}<h4> 
-  
-  
-  <form action="demo_form.asp">
-Post UUID: <input type="text" name="FirstName" value=""><br>
-Post date: <input type="text" name="LastName" value=""><br>
-Post title: <input type="text" name="LastName" value=""><br>
-Post text: <input type="text" name="LastName" value=""><br>
-Post image link: <input type="text" name="LastName" value=""><br>
+    
+    <form>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Select a blogger
+            <select>
+              <option value="husker">Husker</option>
+              <option value="starbuck">Starbuck</option>
+              <option value="hotdog">Hot Dog</option>
+              <option value="apollo">Apollo</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Title of this post
+            <input type="text"/>
+          </label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Image link
+            <input type="text"/>
+          </label>
+        </div>
+      </div>
 
-<input type="submit" value="Submit">
-</form>
-  
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Posting text...
+            <textarea></textarea>
+          </label>
+        </div>
+      </div>
+      
+    </form>
+
+    <a href="#" class="button tiny">Submit Post</a>
+
 </div>
