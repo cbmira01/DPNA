@@ -85,7 +85,12 @@
           // Cycle through colors for Foundation panels.
           svcColorCycle: function(index) {
             // Colors are chosen from local CSS definitions.
-              var colors = ["articleColorA", "articleColorB", "articleColorC"];
+              var colors = ["articleColorA", 
+                            "articleColorB", 
+                            "articleColorC", 
+                            "articleColorB", 
+                            "articleColorC"
+              ];
               return ( colors[index%(colors.length)] );
           },
 
@@ -124,7 +129,7 @@
               if ($scope.posts[uuid].name === bloggerName) {
                   delete $scope.posts[uuid];
               }
-          };
+          }
 
           delete $scope.bloggers[bloggerName];
 
@@ -188,20 +193,40 @@
       $scope.bloggers = $sessionStorage.bloggers;
       $scope.posts = $sessionStorage.posts;
 
+      $scope.defaultBloggerName = Object.keys($scope.bloggers)[0];  // just get the first blogger
+      $scope.newBloggerName = "";
+      $scope.newTitle = "";
+      $scope.newText = "";
+      $scope.newImageLink = "";
       $scope.message = "Add a post";
-
-
-      console.log($scope.postBloggerName);
-
 
       $scope.submitPost = function() {
           var todaysDate = new Date();
           var uuid = generateUUID();
-          
-          var newPosting
-      };
 
-      $sessionStorage.posts = $scope.posts;
+          if ($scope.newBloggerName === "") {
+              $scope.newBloggerName = $scope.defaultBloggerName;
+          }
+
+          if ($scope.newTitle === "") {
+              $scope.newTitle = "A new posting from " + $scope.newBloggerName;
+          }
+
+          if ($scope.newText === "") {
+              $scope.newText = "Enjoy the photo!";
+          }
+
+          $scope.posts[uuid] = {
+              date: todaysDate,
+              name: $scope.newBloggerName,
+              title: $scope.newTitle,
+              text: $scope.newText,
+              image: $scope.newImageLink
+          };
+          
+          $sessionStorage.posts = $scope.posts;
+          $location.path("/allposts/");
+      };
   }]);
 
 
@@ -238,35 +263,35 @@
 
       var posts = {
         "7f0c32a4-ef94-4e05-a284-50eb2f63c305": {
-            date: "Thu, 01 Jan 2010 00:00:00 GMT-0400",
+            date: "2010-11-22T18:48:41.705Z",
             name: "Steve",
             title: "Bellarmine Knights Basketball",
             text: "Great game last night! Check out this signed basketball! My first post. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis arcu et diam maximus volutpat eget egestas quam. Duis aliquam, justo sit amet posuere aliquet, leo nunc blandit est, et ultrices diam risus eget lorem. Vivamus ornare purus quis sem commodo facilisis. In bibendum at lacus tempus convallis. Proin convallis, lectus et pellentesque tincidunt, nunc massa tincidunt dolor, in posuere nisi tellus at turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut ac tortor in ex sollicitudin elementum. Aliquam posuere porta ipsum. Integer non tincidunt erat. Sed condimentum sollicitudin arcu a vehicula.",
             image: "http://auction.steinersports.com/ItemImages/000002/SMITBKS000002_zoom_IMAGE1_238091_mid.jpeg"
         },
         "068bcf68-eede-4e7b-bbb0-1fa648c74c02": {
-            date: "Thu, 01 Jan 2011 00:00:00 GMT-0400",
+            date: "2012-11-22T18:48:41.705Z",
             name: "Shirley",
             title: "Deer Park Goth, Emo",
             text: "Bring out your inner Goth! My first post. Duis ac orci massa. Aenean blandit congue ipsum eu sodales. Donec mollis augue nisi, venenatis dapibus sapien efficitur vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas eu lobortis felis, eu varius est. Donec at sem id erat tristique efficitur nec eu ipsum. Cras non facilisis libero, maximus dictum tortor.",
             image: "https://lh5.googleusercontent.com/UL2Arkl8JPdfpCWo5yy6p3Ihfw9yT2abI8t5XGITbBmpqxYf_B_fUZINv4ii5kNok_wtNsznZk1wTxgWySSTT2369EvbFLPYdFLvMPGjCCOf0TfTtKH7iatgXeF9PIHM6Q"
         },
         "4fced98b-e779-4b2c-b4da-b2a53b5db879": {
-            date: "Thu, 01 Jan 2012 00:00:00 GMT-0400",
+            date: "2011-11-22T18:48:41.705Z",
             name: "Steve",
             title: "Baseball at Deer Park Stadium..",
             text: "Baseball under the lights at our new stadium. No image to share, sorry! My second sports post. Donec faucibus orci eu pulvinar condimentum. Etiam faucibus, orci ut commodo suscipit, lorem est tincidunt nisl, et sodales mauris mauris vel nulla. Curabitur vestibulum faucibus urna, quis blandit tellus faucibus a. Donec sapien neque, posuere eleifend gravida porttitor, ultricies ac nibh. Mauris urna diam, auctor quis risus quis, ullamcorper congue nibh. Nullam luctus dui id felis ornare, sed pulvinar ipsum commodo. Nulla nisl orci, sollicitudin et vulputate consectetur, venenatis vel dolor. Praesent tristique rutrum tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla molestie ultricies eleifend.",
             image: ""
         },
         "0a8b39dd-b699-4665-912f-22639897c84b": {
-            date: "Thu, 01 Jan 2013 00:00:00 GMT-0400",
+            date: "2013-11-22T18:48:41.705Z",
             name: "Shirley",
             title: "Have a colorful summer!",
             text: "A very colorful new summer dress! My second post. Duis tincidunt vulputate nisl, at accumsan nulla bibendum blandit. Duis a libero quis ligula mollis finibus. Quisque venenatis sollicitudin feugiat. Donec magna felis, tristique a malesuada nec, congue ac neque. Cras rutrum tincidunt dolor nec rhoncus. Nulla augue neque, facilisis ornare felis eget, fringilla feugiat dui. Nullam scelerisque vestibulum nunc. Cras accumsan vehicula mi, ac fermentum tellus dictum ut. Proin at scelerisque orci. Nunc quis iaculis lacus. Ut ultrices sodales dapibus. Vestibulum dui lorem, dignissim eu urna ut, euismod volutpat mi. Ut at purus nulla. Donec euismod vestibulum rutrum.",
             image: "http://rivista-cdn.palmspringslife.com/Palm-Springs-Life/May-2009/Fashion-Week-El-Paseo-2009-Wrap/Monday-March-23-Pacifica-Fashion-Runway-Bar/mondaylead.jpg?ver=1404319378"
         },
         "b180bdf2-7a3f-4798-aa97-ee888b69c455": {
-            date: "Thu, 01 Jan 2014 00:00:00 GMT-0400",
+            date: "2014-11-22T18:48:41.705Z",
             name: "Shirley",
             title: "New look for Deer Park",
             text: "Check out this interesting hair accessory! Third post for me. Pellentesque urna libero, fringilla et arcu eget, dignissim interdum libero. Pellentesque urna libero, vulputate id tortor et, aliquam porttitor nibh. Sed at efficitur enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam vel malesuada velit, quis tempus purus. Suspendisse faucibus elit non iaculis tincidunt. Curabitur blandit sem vitae dignissim bibendum. Donec et rutrum justo. In hac habitasse platea dictumst. Pellentesque ut commodo lectus.",

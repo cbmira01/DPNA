@@ -2,11 +2,12 @@
 <div class="row" my-reflow-panels>
   <h4>{{message}}<h4> 
     
-    <form>
+    <form name="addPostForm">
       <div class="row">
         <div class="large-12 columns">
           <label>Select a blogger
-            <select ng-model="newbloggerName">
+            <select ng-model="newBloggerName">
+              <option value="" selected>--Please select a blogger's name--</option>
               <option ng-repeat="(bloggerName, bloggerData) in bloggers" value="{{bloggerName}}">{{bloggerName}}</option>
             </select>
           </label>
@@ -15,30 +16,30 @@
       
       <div class="row">
         <div class="large-12 columns">
-          <label ng-model="newTitle">Title of this post
-            <input type="text"/>
+          <label>Title of this post
+            <input type="text" ng-model="newTitle"/>
           </label>
         </div>
       </div>
       
       <div class="row">
         <div class="large-12 columns">
-          <label ng-model="newImageLink">Image link
-            <input type="text"/>
+          <label>Image link
+            <input type="text" ng-model="newImageLink"/>
           </label>
         </div>
       </div>
 
       <div class="row">
         <div class="large-12 columns">
-          <label ng-model="newPostText">Posting text...
-            <textarea></textarea>
+          <label>Posting text...
+            <textarea ng-model="newText"></textarea>
           </label>
         </div>
       </div>
       
     </form>
 
-    <a href="#" ng-click="submitPost()" class="button tiny">Submit Post</a>
+    <a href="#" ng-click="submitPost()" class="button tiny" target="_self">Post</a>
 
 </div>

@@ -4,7 +4,7 @@
        data-equalizer-watch 
        ng-repeat="(postUUID, postData) in posts">
 
-    <p>{{postData.name}}</p>
+    <p>{{postData.name}} at {{postData.date}}</p>
     <img src="{{imageLink(postData.image)}}" alt="Blogpost picture." />
     <p>{{postData.title}}</p>
 
