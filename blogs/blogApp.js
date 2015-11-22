@@ -11,32 +11,27 @@
     - add and delete bloggers;
     - add and delete posts;
     - reset persistent data back to an initial state.
-    
+
   This application demonstrates the following things:
-    - browser session-storage for persistence;  
+    - browser session-storage for persistence;
     - color cycling on Foundation panels;
     - successful application of Foundation attributes after Angular DOM construction.
 
-  Thanks to K. Scott Allen for an excellent Angular tutorial.
-    https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
-
-  Thanks to Thomas Kilian for how to handle "DOM ready for Foundation reflow".
-    http://stackoverflow.com/a/12243086
-    
-  Thanks to sylwester for an idea contributing to color cycling.
-    http://stackoverflow.com/a/24874022
-    
-  Thanks to Anders Ekdahl for advice on Angular factories.
-    http://stackoverflow.com/a/15026440
-    
-  Thanks to John David Miller on how to iterate over object keys in an Angular view.
-    http://stackoverflow.com/a/15127934  
-
-  Thanks to zavidovych for a tip on Angular view refresh.
-    http://stackoverflow.com/a/26345375    
-
-  Thanks to "briguy37" for Javascript UUID function.
-    http://jsfiddle.net/briguy37/2mvfd/
+  Thanks to...
+      K. Scott Allen for an excellent Angular tutorial.
+          https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
+      Thomas Kilian for how to handle "DOM ready for Foundation reflow".
+          http://stackoverflow.com/a/12243086
+      sylwester for an idea contributing to color cycling.
+          http://stackoverflow.com/a/24874022
+      Anders Ekdahl for advice on Angular factories.
+          http://stackoverflow.com/a/15026440
+      John David Miller on how to iterate over object keys in an Angular view.
+          http://stackoverflow.com/a/15127934
+      zavidovych for a tip on Angular view refresh.
+          http://stackoverflow.com/a/26345375
+      "briguy37" for Javascript UUID function.
+          http://jsfiddle.net/briguy37/2mvfd/
 */
 
   "use strict";
@@ -69,7 +64,7 @@
         .when("/add-post", {
             templateUrl: "templates/add-post.html",
             controller: "AddPostController"
-        })        
+        })
         .when("/allposts", {
             templateUrl: "templates/allposts.html",
             controller: "AllPostsController"
@@ -82,7 +77,7 @@
             redirectTo: "/"
         });
   });
-  
+
 
   // myServices factory provides support functions for all controllers.
   blogApp.factory('myServices', function() {
@@ -109,37 +104,33 @@
   // Gets the app started with links to bloggers and their postings.
   blogApp.controller("HomeController",
                     ["$scope",
-                     "$route",
-                     "$location",
-                     "$routeParams",
                      "$sessionStorage",
                      "myServices",
-                     function($scope, $route, $location, $routeParams, $sessionStorage, myServices) {
+                     function($scope, $sessionStorage, myServices) {
 
       $scope.bloggers = $sessionStorage.bloggers;
       $scope.posts = $sessionStorage.posts;
-      
-      $scope.colorCycle = function(index) {        
+
+      $scope.colorCycle = function(index) {
           return myServices.svcColorCycle(index);
       };
 
       $scope.imageLink = function(tryImageLink) {
           return myServices.svcImageLink(tryImageLink);
       };
-           
-      $scope.deleteBlogger = function(bloggerName) {       
+
+      $scope.deleteBlogger = function(bloggerName) {
           for (var uuid in $scope.posts) {
               if ($scope.posts[uuid].name === bloggerName) {
                   delete $scope.posts[uuid];
               }
-          };      
-          
+          };
+
           delete $scope.bloggers[bloggerName];
 
           $sessionStorage.bloggers = $scope.bloggers;
           $sessionStorage.posts = $scope.posts;
       };
-      
   }]);
 
 
@@ -158,15 +149,14 @@
       $scope.imageLink = function(tryImageLink) {
           return myServices.svcImageLink(tryImageLink);
       };
-      
-      $scope.deletePost = function(uuid) {          
-          delete $scope.posts[uuid];
-          $sessionStorage.posts = $scope.posts;        
-      };      
 
+      $scope.deletePost = function(uuid) {
+          delete $scope.posts[uuid];
+          $sessionStorage.posts = $scope.posts;
+      };
   }]);
-  
-  
+
+
   blogApp.controller("ReadPostController",
                     ["$scope",
                      "$sessionStorage",
@@ -176,43 +166,55 @@
   }]);
 
 
-  blogApp.controller("AddBloggerController", 
-                    ["$scope", 
-                     "$location",                     
+  blogApp.controller("AddBloggerController",
+                    ["$scope",
+                     "$location",
                      "$sessionStorage",
-                     "myServices",                     
+                     "myServices",
                      function($scope, $location, $sessionStorage, myServices) {
-                       
+
       $scope.message = "Add a blogger";
-// $location.path("/???");
-
   }]);
-  
-  
-  // Dialog for collecting and vetting new blogger information.
-  blogApp.controller("AddPostController", 
-                    ["$scope", 
-                     "$location", 
-                     "$sessionStorage",
-                     "myServices",                     
-                     function($scope, $location, $sessionStorage, myServices) {
-                       
-      $scope.message = "Add a post";
-// $location.path("/???");
 
-  }]);  
+
+  // Dialog for collecting and vetting new blogger information.
+  blogApp.controller("AddPostController",
+                    ["$scope",
+                     "$location",
+                     "$sessionStorage",
+                     "myServices",
+                     function($scope, $location, $sessionStorage, myServices) {
+
+      $scope.bloggers = $sessionStorage.bloggers;
+      $scope.posts = $sessionStorage.posts;
+
+      $scope.message = "Add a post";
+
+
+      console.log($scope.postBloggerName);
+
+
+      $scope.submitPost = function() {
+          var todaysDate = new Date();
+          var uuid = generateUUID();
+          
+          var newPosting
+      };
+
+      $sessionStorage.posts = $scope.posts;
+  }]);
 
 
   // ResetController provides starting data for app demonstration.
   blogApp.controller("ResetController",
                     ["$scope",
-                     "$location",                    
+                     "$location",
                      "$sessionStorage",
                      "myServices",
                      function($scope, $location, $sessionStorage, myServices) {
 
       delete $sessionStorage.bloggers;
-      delete $sessionStorage.posts;     
+      delete $sessionStorage.posts;
 
       var bloggers = {
         "Steve": {
@@ -275,7 +277,6 @@
       $sessionStorage.bloggers = bloggers;
       $sessionStorage.posts = posts;
       $scope.message = "blogApp initial data has been reset.";
-      
+
       $location.path("/");
-      
   }]);

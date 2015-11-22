@@ -6,11 +6,8 @@
       <div class="row">
         <div class="large-12 columns">
           <label>Select a blogger
-            <select>
-              <option value="husker">Husker</option>
-              <option value="starbuck">Starbuck</option>
-              <option value="hotdog">Hot Dog</option>
-              <option value="apollo">Apollo</option>
+            <select ng-model="newbloggerName">
+              <option ng-repeat="(bloggerName, bloggerData) in bloggers" value="{{bloggerName}}">{{bloggerName}}</option>
             </select>
           </label>
         </div>
@@ -18,7 +15,7 @@
       
       <div class="row">
         <div class="large-12 columns">
-          <label>Title of this post
+          <label ng-model="newTitle">Title of this post
             <input type="text"/>
           </label>
         </div>
@@ -26,7 +23,7 @@
       
       <div class="row">
         <div class="large-12 columns">
-          <label>Image link
+          <label ng-model="newImageLink">Image link
             <input type="text"/>
           </label>
         </div>
@@ -34,7 +31,7 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <label>Posting text...
+          <label ng-model="newPostText">Posting text...
             <textarea></textarea>
           </label>
         </div>
@@ -42,6 +39,6 @@
       
     </form>
 
-    <a href="#" class="button tiny">Submit Post</a>
+    <a href="#" ng-click="submitPost()" class="button tiny">Submit Post</a>
 
 </div>
