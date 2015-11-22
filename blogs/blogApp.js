@@ -21,16 +21,19 @@
     https://www.youtube.com/playlist?list=PLBTXLYhPD8MHGMW-ZEvdAtkxyAz-N8Toj
 
   Thanks to Thomas Kilian for how to handle "DOM ready for Foundation reflow".
-    http://stackoverflow.com/questions/12240639/how-can-i-run-a-directive-after-the-dom-has-finished-rendering/12243086#12243086
-
-  Thanks to rchawdry for an idea contributing to color cycling.
-    http://stackoverflow.com/questions/24873335/ng-repeat-passing-index-value-to-a-function/24874018#24874018
-
+    http://stackoverflow.com/a/12243086
+    
+  Thanks to sylwester for an idea contributing to color cycling.
+    http://stackoverflow.com/a/24874022
+    
   Thanks to Anders Ekdahl for advice on Angular factories.
     http://stackoverflow.com/a/15026440
     
   Thanks to John David Miller on how to iterate over object keys in an Angular view.
-    http://stackoverflow.com/a/15127934    
+    http://stackoverflow.com/a/15127934  
+
+  Thanks to zavidovych for a tip on Angular view refresh.
+    http://stackoverflow.com/a/26345375    
 
   Thanks to "briguy37" for Javascript UUID function.
     http://jsfiddle.net/briguy37/2mvfd/
@@ -44,11 +47,11 @@
   // Directive to handle reflow rendering of Foundation panels.
   .directive("myReflowPanels", function($timeout) {
       return {
-        link: function(scope, element, attrs) {
-          $timeout(function() {
-            $(document).foundation("reflow");
-          });
-        }
+          link: function(scope, element, attrs) {
+            $timeout(function() {
+              $(document).foundation("reflow");
+            });
+          }
       };
   });
 
@@ -56,26 +59,28 @@
   blogApp.config(function($routeProvider) {
       $routeProvider
         .when("/", {
-          templateUrl: "templates/home.html",
-          controller: "HomeController"
+            templateUrl: "templates/home.html",
+            controller: "HomeController"
         })
         .when("/add-blogger", {
-          templateUrl: "templates/add-blogger.html",
-          controller: "AddBloggerController"
+            templateUrl: "templates/add-blogger.html",
+            controller: "AddBloggerController"
         })
         .when("/add-post", {
-          templateUrl: "templates/add-post.html",
-          controller: "AddPostController"
+            templateUrl: "templates/add-post.html",
+            controller: "AddPostController"
         })        
         .when("/allposts", {
-          templateUrl: "templates/allposts.html",
-          controller: "AllPostsController"
+            templateUrl: "templates/allposts.html",
+            controller: "AllPostsController"
         })
         .when("/reset", {
-          templateUrl: "templates/reset.html",
-          controller: "ResetController"
+            templateUrl: "templates/reset.html",
+            controller: "ResetController"
         })
-        .otherwise({redirectTo: "/"});
+        .otherwise({
+            redirectTo: "/"
+        });
   });
   
 
@@ -85,17 +90,17 @@
           // Cycle through colors for Foundation panels.
           svcColorCycle: function(index) {
             // Colors are chosen from local CSS definitions.
-            var colors = ["articleColorA", "articleColorB", "articleColorC"];
-            return ( colors[index%(colors.length)] );
+              var colors = ["articleColorA", "articleColorB", "articleColorC"];
+              return ( colors[index%(colors.length)] );
           },
 
           // Handle case of no image provided.
           svcImageLink: function(tryImageLink) {
-            if (tryImageLink === "") {
-              return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
-            } else {
-              return tryImageLink;
-            }
+              if (tryImageLink === "") {
+                  return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+              } else {
+                  return tryImageLink;
+              }
           }
       }; // end return
   });
@@ -104,36 +109,35 @@
   // Gets the app started with links to bloggers and their postings.
   blogApp.controller("HomeController",
                     ["$scope",
+                     "$route",
                      "$location",
+                     "$routeParams",
                      "$sessionStorage",
                      "myServices",
-                     function($scope, $location, $sessionStorage, myServices) {
+                     function($scope, $route, $location, $routeParams, $sessionStorage, myServices) {
 
       $scope.bloggers = $sessionStorage.bloggers;
-      $scope.trigger = 0;
+      $scope.posts = $sessionStorage.posts;
       
       $scope.colorCycle = function(index) {        
-        return myServices.svcColorCycle(index);
+          return myServices.svcColorCycle(index);
       };
 
       $scope.imageLink = function(tryImageLink) {
-        return myServices.svcImageLink(tryImageLink);
+          return myServices.svcImageLink(tryImageLink);
       };
            
-      $scope.deleteBlogger = function(bloggerName) {
-/*   console.log(bloggerName + "   " + $scope.bloggers[bloggerName]);
-        // Delete all posts associated with the blogger.
-        
-        // Delete the blogger.
-        $scope.$apply(function() {
-            delete $scope.bloggers[bloggerName];
-            $scope.trigger++;
-        });
-        
+      $scope.deleteBlogger = function(bloggerName) {       
+          for (var uuid in $scope.posts) {
+              if ($scope.posts[uuid].name === bloggerName) {
+                  delete $scope.posts[uuid];
+              }
+          };      
+          
+          delete $scope.bloggers[bloggerName];
 
-        // Update persistent store and re-render the view.
-        $sessionStorage.bloggers = $scope.bloggers;
-         */
+          $sessionStorage.bloggers = $scope.bloggers;
+          $sessionStorage.posts = $scope.posts;
       };
       
   }]);
@@ -148,12 +152,17 @@
       $scope.posts = $sessionStorage.posts;
 
       $scope.colorCycle = function(index) {
-        return myServices.svcColorCycle(index);
+          return myServices.svcColorCycle(index);
       };
 
       $scope.imageLink = function(tryImageLink) {
-        return myServices.svcImageLink(tryImageLink);
+          return myServices.svcImageLink(tryImageLink);
       };
+      
+      $scope.deletePost = function(uuid) {          
+          delete $scope.posts[uuid];
+          $sessionStorage.posts = $scope.posts;        
+      };      
 
   }]);
   
