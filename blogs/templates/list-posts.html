@@ -5,11 +5,11 @@
        ng-repeat="(postUUID, postData) in resultPosts">
 
     <p>{{postData.name}} at {{postData.date}}</p>
-    <img src="{{imageLink(postData.image)}}" alt="Blogpost picture." />
+    <img class="hide-for-small-only" src="{{imageLink(postData.image)}}" alt="Blogpost picture." />
     <p>{{postData.title}}</p>
 
     <div class="row">
-      <a href="#" class="button tiny">Read More</a>
+      <a href="#/read-post/{{postUUID}}" class="button tiny">Read More</a>
       <a href="#" ng-click="deletePost(postUUID)" class="button tiny" target="_self">Delete Post</a>
     </div>
   </div>

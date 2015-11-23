@@ -72,7 +72,7 @@
         .when("/read-post/:uuid", {
             templateUrl: "templates/read-post.html",
             controller: "ReadPostController"
-        })        
+        })
         .when("/reset", {
             templateUrl: "templates/reset.html",
             controller: "ResetController"
@@ -154,14 +154,14 @@
 
       $scope.posts = $sessionStorage.posts;
       $scope.resultPosts = {};
-      
+
       for (var uuid in $scope.posts) {
           if (      $routeParams.bloggername === $scope.posts[uuid].name
                  || $routeParams.bloggername === "all") {
               $scope.resultPosts[uuid] = $scope.posts[uuid];
           }
       }
-      
+
       $scope.colorCycle = function(index) {
           return myServices.svcColorCycle(index);
       };
@@ -184,11 +184,20 @@
                      "$sessionStorage",
                      "myServices",
                      function($scope, $routeParams, $sessionStorage, myServices) {
-                       
+
       $scope.bloggers = $sessionStorage.bloggers;
       $scope.posts = $sessionStorage.posts;
-      $scope.desiredPost = $scope.posts[$routeParams.uuid];                       
+      $scope.UUID = $routeParams.uuid;
 
+      $scope.bloggerName = $scope.posts[$scope.UUID].name;
+      $scope.postDate = $scope.posts[$scope.UUID].date;
+      $scope.postTitle = $scope.posts[$scope.UUID].title;
+      $scope.postText = $scope.posts[$scope.UUID].text;
+      $scope.postImageLink = $scope.posts[$scope.UUID].image;
+
+      $scope.bloggerSlogan = $scope.bloggers[$scope.bloggerName].slogan;
+      $scope.bloggerResume = $scope.bloggers[$scope.bloggerName].resume;
+      $scope.bloggerPhotoLink = $scope.bloggers[$scope.bloggerName].photolink;
   }]);
 
 
