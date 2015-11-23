@@ -65,10 +65,14 @@
             templateUrl: "templates/add-post.html",
             controller: "AddPostController"
         })
-        .when("/allposts", {
-            templateUrl: "templates/allposts.html",
-            controller: "AllPostsController"
+        .when("/list-posts/:bloggername", {
+            templateUrl: "templates/list-posts.html",
+            controller: "ListPostsController"
         })
+        .when("/read-post/:uuid", {
+            templateUrl: "templates/read-post.html",
+            controller: "ReadPostController"
+        })        
         .when("/reset", {
             templateUrl: "templates/reset.html",
             controller: "ResetController"
@@ -85,10 +89,10 @@
           // Cycle through colors for Foundation panels.
           svcColorCycle: function(index) {
             // Colors are chosen from local CSS definitions.
-              var colors = ["articleColorA", 
-                            "articleColorB", 
-                            "articleColorC", 
-                            "articleColorB", 
+              var colors = ["articleColorA",
+                            "articleColorB",
+                            "articleColorC",
+                            "articleColorB",
                             "articleColorC"
               ];
               return ( colors[index%(colors.length)] );
@@ -139,14 +143,25 @@
   }]);
 
 
-  blogApp.controller("AllPostsController",
+  blogApp.controller("ListPostsController",
                     ["$scope",
+                     "$location",
+                     "$routeParams",
+                     "$route",
                      "$sessionStorage",
                      "myServices",
-                     function($scope, $sessionStorage, myServices) {
+                     function($scope, $location, $routeParams, $route, $sessionStorage, myServices) {
 
       $scope.posts = $sessionStorage.posts;
-
+      $scope.resultPosts = {};
+      
+      for (var uuid in $scope.posts) {
+          if (      $routeParams.bloggername === $scope.posts[uuid].name
+                 || $routeParams.bloggername === "all") {
+              $scope.resultPosts[uuid] = $scope.posts[uuid];
+          }
+      }
+      
       $scope.colorCycle = function(index) {
           return myServices.svcColorCycle(index);
       };
@@ -158,15 +173,21 @@
       $scope.deletePost = function(uuid) {
           delete $scope.posts[uuid];
           $sessionStorage.posts = $scope.posts;
+          $route.reload();
       };
   }]);
 
 
   blogApp.controller("ReadPostController",
                     ["$scope",
+                     "$routeParams",
                      "$sessionStorage",
                      "myServices",
-                     function($scope, $sessionStorage, myServices) {
+                     function($scope, $routeParams, $sessionStorage, myServices) {
+                       
+      $scope.bloggers = $sessionStorage.bloggers;
+      $scope.posts = $sessionStorage.posts;
+      $scope.desiredPost = $scope.posts[$routeParams.uuid];                       
 
   }]);
 
@@ -180,7 +201,7 @@
 
       $scope.bloggers = $sessionStorage.bloggers;
       $scope.message = "Add a blogger";
-      
+
       $scope.newBloggerName = "";
       $scope.newSlogan = "";
       $scope.newResume = "";
@@ -206,10 +227,10 @@
               resume: $scope.newResume,
               photolink: $scope.newImageLink
           };
-          
+
           $sessionStorage.bloggers = $scope.bloggers;
           $location.path("/");
-      };      
+      };
   }]);
 
 
@@ -223,7 +244,7 @@
 
       $scope.bloggers = $sessionStorage.bloggers;
       $scope.posts = $sessionStorage.posts;
-      $scope.message = "Add a post";      
+      $scope.message = "Add a post";
 
       $scope.defaultBloggerName = Object.keys($scope.bloggers)[0];  // just get the first blogger
       $scope.newBloggerName = "";
@@ -233,10 +254,10 @@
 
       $scope.submitPost = function() {
           if ($scope.newTitle === "") {
-              $location.path("/allposts");
+              $location.path("/list-posts/all");
               return;
           }
-          
+
           var todaysDate = new Date();
           var uuid = generateUUID();
 
@@ -259,9 +280,9 @@
               text: $scope.newText,
               image: $scope.newImageLink
           };
-          
+
           $sessionStorage.posts = $scope.posts;
-          $location.path("/allposts/");
+          $location.path("/list-posts/all");
       };
   }]);
 
@@ -337,7 +358,7 @@
 
       $sessionStorage.bloggers = bloggers;
       $sessionStorage.posts = posts;
-      $scope.message = "blogApp initial data has been reset.";
+      $scope.message = "Application initial data has been reset.";
 
-      $location.path("/");
+      //$location.path("/");
   }]);
